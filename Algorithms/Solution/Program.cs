@@ -1,4 +1,5 @@
 ﻿using System;
+using Algorithms;
 
 namespace Solution
 {
@@ -6,7 +7,7 @@ namespace Solution
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
         }
     }
 }
