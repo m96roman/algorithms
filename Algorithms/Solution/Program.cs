@@ -1,5 +1,6 @@
 ﻿using System;
 using Algorithms;
+using Codility.PrefixSums;
 
 namespace Solution
 {
@@ -7,7 +8,8 @@ namespace Solution
     {
         static void Main(string[] args)
         {
-            
+
+            Console.ReadKey();
         }
     }
 }
