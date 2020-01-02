@@ -4,6 +4,7 @@ using Codility.Arrays;
 using Codility.Iterations;
 using Codility.PrefixSums;
 using Codility.StacksAndQueues;
+using Codility.TimeComplexity;
 
 namespace Solution
 {
@@ -11,7 +12,7 @@ namespace Solution
     {
         static void Main(string[] args)
         {
-            var result = new Brackets().solution("7");
+            var result = new TapeEquilibrium().solution(new[] {3, 1, 2, 4, 3});
             Console.WriteLine(string.Join(",", result));
             Console.ReadKey();
         }
