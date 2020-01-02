@@ -13,7 +13,8 @@ namespace Solution
     {
         static void Main(string[] args)
         {
-            var result = new FrogRiverOne().solution(5, new []{1, 3, 1, 4, 2, 3, 5, 4});
+            var result = new CountDiv().solution(6, 11, 2);
+
             Console.WriteLine(string.Join(",", result));
             Console.ReadKey();
         }
