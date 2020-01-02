@@ -13,7 +13,7 @@ namespace Solution
     {
         static void Main(string[] args)
         {
-            var result = new MaxCounters().solution(5, new[] {3, 4, 4, 6, 1, 4, 4});
+            var result = new FrogRiverOne().solution(5, new []{1, 3, 1, 4, 2, 3, 5, 4});
             Console.WriteLine(string.Join(",", result));
             Console.ReadKey();
         }
