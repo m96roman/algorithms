@@ -1,11 +1,6 @@
 ﻿using System;
-using Algorithms;
-using Codility.Arrays;
-using Codility.CountingElements;
-using Codility.Iterations;
 using Codility.PrefixSums;
-using Codility.StacksAndQueues;
-using Codility.TimeComplexity;
+using Codility.Sorting;
 
 namespace Solution
 {
@@ -13,7 +8,7 @@ namespace Solution
     {
         static void Main(string[] args)
         {
-            var result = new CountDiv().solution(6, 11, 2);
+            var result = new Triangle().solution(new[] {10, 2, 5, 1, 8, 20});
 
             Console.WriteLine(string.Join(",", result));
             Console.ReadKey();
