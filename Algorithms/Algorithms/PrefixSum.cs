@@ -30,6 +30,11 @@ namespace Algorithms
             return _diffFunc(array[endIndex], array[startIndex - 1]);
         }
 
+        public T GetSumAt(int index)
+        {
+            return _prefixSumArray.Value[index];
+        }
+
         public T[] GetSumArray()
         {
             return _prefixSumArray.Value.ToArray();
