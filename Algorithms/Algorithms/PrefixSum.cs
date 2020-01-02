@@ -30,6 +30,11 @@ namespace Algorithms
             return _diffFunc(array[endIndex], array[startIndex - 1]);
         }
 
+        public T[] GetSumArray()
+        {
+            return _prefixSumArray.Value.ToArray();
+        }
+
         private T[] BuildPrefixSumArray()
         {
             var length = _originalArray.Length;
