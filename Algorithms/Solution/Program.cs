@@ -13,7 +13,7 @@ namespace Solution
     {
         static void Main(string[] args)
         {
-            var result = new PermCheck().solution(new[] {1, 3, 4, 8});
+            var result = new MaxCounters().solution(5, new[] {3, 4, 4, 6, 1, 4, 4});
             Console.WriteLine(string.Join(",", result));
             Console.ReadKey();
         }
