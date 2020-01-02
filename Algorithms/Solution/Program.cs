@@ -12,7 +12,7 @@ namespace Solution
     {
         static void Main(string[] args)
         {
-            var result = new TapeEquilibrium().solution(new[] {3, 1, 2, 4, 3});
+            var result = new OddOccurrencesInArray().solution(new []{9, 3, 9, 3, 9, 9, 7});
             Console.WriteLine(string.Join(",", result));
             Console.ReadKey();
         }
