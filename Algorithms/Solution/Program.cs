@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using Codility.PrefixSums;
 using Codility.Sorting;
+using Codility.StacksAndQueues;
 
 namespace Solution
 {
@@ -8,7 +10,7 @@ namespace Solution
     {
         static void Main(string[] args)
         {
-            var result = new Triangle().solution(new[] {10, 2, 5, 1, 8, 20});
+            var result = new NumberOfDiscIntersections().solution(new[] { 1, 2147483647, 0 });
 
             Console.WriteLine(string.Join(",", result));
             Console.ReadKey();
