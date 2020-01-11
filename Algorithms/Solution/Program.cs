@@ -10,7 +10,7 @@ namespace Solution
     {
         static void Main(string[] args)
         {
-            var result = new Nesting().solution("(()()");
+            var result = new StoneWall().solution(new []{8, 8, 5, 7, 9, 8, 7, 4, 8});
 
             Console.WriteLine(string.Join(",", result));
             Console.ReadKey();
