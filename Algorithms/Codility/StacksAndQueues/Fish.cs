@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Codility.StacksAndQueues
@@ -8,49 +9,31 @@ namespace Codility.StacksAndQueues
         public int solution(int[] A, int[] B)
         {
             var river = new Stack<Shark>();
+            var countOfUpstreamFish = 0;
 
             foreach (var shark in A.Zip(B, (a, b) => new Shark { Size = a, Direction = (Direction)b }))
             {
-                if (river.Count == 0)
+                if (shark.Direction == Direction.Upstream)
                 {
-                    river.Push(shark);
-                    continue;
-                }
-
-                var lastShark = river.Peek();
-                if (lastShark.Direction == Direction.Upstream)
-                {
-                    river.Push(shark);
-                    continue;
-                }
-
-                if (shark.Direction == Direction.Downstream)
-                {
-                    river.Push(shark);
-                    continue;
-                }
-
-                while (shark.Size > lastShark.Size)
-                {
-                    river.Pop();
+                    while (river.Count != 0 && shark.Size > river.Peek().Size)
+                    {
+                        river.Pop();
+                    }
 
                     if (river.Count == 0)
                     {
-                        river.Push(shark);
-                        break;
+                        ++countOfUpstreamFish;
                     }
-
-                    lastShark = river.Peek();
-
-                    if (lastShark.Direction == Direction.Upstream)
-                    {
-                        river.Push(shark);
-                        break;
-                    }
+                }
+                else
+                {
+                    river.Push(shark);
                 }
             }
 
-            return river.Count;
+            var countOfDownstreamFish = river.Count;
+
+            return countOfDownstreamFish + countOfUpstreamFish;
         }
 
         private class Shark
