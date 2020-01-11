@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace Codility.StacksAndQueues
 {
@@ -8,32 +7,19 @@ namespace Codility.StacksAndQueues
         public int solution(int[] H)
         {
             var wall = new Stack<int>();
-
-            wall.Push(H.First());
-            var countOfBlocks = 1;
+            var countOfBlocks = 0;
             
-            foreach (var height in H.Skip(1))
+            foreach (var height in H)
             {
-                var lastBlock = wall.Peek();
+                while (wall.Count > 0 && wall.Peek() > height)
+                {
+                    wall.Pop();
+                }
 
-                if (lastBlock < height)
+                if (wall.Count == 0 || wall.Peek() < height)
                 {
                     wall.Push(height);
                     ++countOfBlocks;
-                }
-                else if (lastBlock > height)
-                {
-                    do
-                    {
-                        wall.Pop();
-                    }
-                    while (wall.Count > 0 && wall.Peek() > height);
-
-                    if (wall.Count == 0 || wall.Peek() < height)
-                    {
-                        wall.Push(height);
-                        ++countOfBlocks;
-                    }
                 }
             }
 
