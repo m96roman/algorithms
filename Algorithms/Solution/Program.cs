@@ -10,7 +10,7 @@ namespace Solution
     {
         static void Main(string[] args)
         {
-            var result = new NumberOfDiscIntersections().solution(new[] { 1, 2147483647, 0 });
+            var result = new Nesting().solution("(()()");
 
             Console.WriteLine(string.Join(",", result));
             Console.ReadKey();
