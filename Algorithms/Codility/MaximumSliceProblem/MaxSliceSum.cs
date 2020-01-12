@@ -19,19 +19,4 @@ namespace Codility.MaximumSliceProblem
             return maxSlice;
         }
     }
-
-    //if (el + maxSum< 0)
-    //{
-    //maxSum = 0;
-    //}
-    //else
-    //{
-    //maxSum = el + maxSum;
-    //}
-
-
-    //if (maxSum > maxSlice)
-    //{
-    //maxSlice = maxSum;
-    //}
 }
