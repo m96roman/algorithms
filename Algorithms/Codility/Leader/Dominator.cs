@@ -9,27 +9,31 @@ namespace Codility.Leader
     {
         public int solution(int[] A)
         {
-            var size = 0;
-            var value = -1;
+            var candidateCount = 0;
+            var candidateValue = -1;
 
             foreach (var el in A)
             {
-                if (size == 0)
+                if (candidateCount == 0)
                 {
-                    value = el;
-                    ++size;
+                    candidateValue = el;
+                    ++candidateCount;
                 }
-                else if(value != el)
+                else if(candidateValue != el)
                 {
-                    --size;
+                    --candidateCount;
+                }
+                else
+                {
+                    ++candidateCount;
                 }
             }
 
-            var countOfLeader = A.Count(it => it == value);
+            var countOfLeader = A.Count(it => it == candidateValue);
 
             if (countOfLeader > A.Length / 2)
             {
-                return Array.IndexOf(A, value);
+                return Array.IndexOf(A, candidateValue);
             }
 
             return -1;
