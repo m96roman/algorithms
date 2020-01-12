@@ -15,15 +15,8 @@ namespace Codility.MaximumSliceProblem
 
             foreach (var el in A)
             {
-                if (el < minElement)
-                {
-                    minElement = el;
-                }
-
-                if (el - minElement > maxDiff)
-                {
-                    maxDiff = el - minElement;
-                }
+                minElement = Math.Min(el, minElement);
+                maxDiff = Math.Max(el - minElement, maxDiff);
             }
 
             return maxDiff;
