@@ -4,16 +4,17 @@ using System.Text.RegularExpressions;
 
 namespace Algotester
 {
-    class Program
+    public class Teeth
     {
-        static void Main(string[] args)
+        public void Run()
         {
             var input = Console.ReadLine()
-                 .Trim()
-                 .Split(" ")
-                 .Select(int.Parse)
-                 .ToArray();
+                .Trim()
+                .Split(" ")
+                .Select(int.Parse)
+                .ToArray();
 
+            var count = input[0];
             var sharp = input[1];
 
             var teethSharpnessInput = Regex.Replace(Console.ReadLine().Trim(), "[ ]{2,}", " ");
@@ -25,9 +26,9 @@ namespace Algotester
             var maxCount = 0;
             var currentCount = 0;
 
-            for (var i = 0; i < teethSharpness.Length; ++i)
+            for(var i = 0; i < teethSharpness.Length; ++i)
             {
-                if (teethSharpness[i] >= sharp)
+                if(teethSharpness[i] >= sharp)
                 {
                     ++currentCount;
                 }
