@@ -6,9 +6,9 @@ namespace Algotester
 {
     public static class AlgotesterSolutions1
     {
-        public class BorsсhPotatoSalad
+        public static class BorsсhPotatoSalad
         {
-            public void Run()
+            public static void Run()
             {
                 var friendsCount = int.Parse(Console.ReadLine());
                 int A = 0, B = 0, C = 0;
@@ -44,9 +44,9 @@ namespace Algotester
             }
         }
 
-        public class DeputyMoney
+        public static class DeputyMoney
         {
-            public void Run()
+            public static void Run()
             {
                 var input = Console.ReadLine();
                 var money = int.Parse(input.Trim());
@@ -71,9 +71,9 @@ namespace Algotester
             }
         }
 
-        public class ElephantsCoach
+        public static class ElephantsCoach
         {
-            public void Run()
+            public static void Run()
             {
                 Console.ReadLine();
 
@@ -95,9 +95,9 @@ namespace Algotester
             }
         }
 
-        public class InterestingGame
+        public static class InterestingGame
         {
-            public void Run()
+            public static void Run()
             {
                 var str = Regex.Replace(Console.ReadLine().Trim(), "[ ]{2,}", " ");
                 var dimension = str.Split(" ").Select(int.Parse).ToArray();
@@ -117,9 +117,9 @@ namespace Algotester
             }
         }
 
-        public class MaryAndCookies
+        public static class MaryAndCookies
         {
-            public void Run()
+            public static void Run()
             {
                 Console.ReadLine();
                 var str = Regex.Replace(Console.ReadLine(), "[ ]{2,}", " ");
@@ -132,9 +132,9 @@ namespace Algotester
             }
         }
 
-        public class Oranges
+        public static class Oranges
         {
-            public void Run()
+            public static void Run()
             {
                 var str = Regex.Replace(Console.ReadLine().Trim(), "[ ]{2,}", " ");
                 var counts = str.Split(" ").Select(long.Parse).ToArray();
@@ -145,9 +145,9 @@ namespace Algotester
             }
         }
 
-        public class PetrosCake
+        public static class PetrosCake
         {
-            public void Run()
+            public static void Run()
             {
                 var input = Console.ReadLine()
                     .Trim()
@@ -163,9 +163,9 @@ namespace Algotester
             }
         }
 
-        public class Teeth
+        public static class Teeth
         {
-            public void Run()
+            public static void Run()
             {
                 var input = Console.ReadLine()
                     .Trim()
@@ -204,9 +204,9 @@ namespace Algotester
             }
         }
 
-        public class Helloween
+        public static class Helloween
         {
-            public void Run()
+            public static void Run()
             {
                 Console.ReadLine();
 
@@ -231,9 +231,9 @@ namespace Algotester
             }
         }
 
-        public class Robot
+        public static class Robot
         {
-            public void Run()
+            public static void Run()
             {
                 var commands = Console.ReadLine();
 
@@ -254,9 +254,9 @@ namespace Algotester
             }
         }
 
-        public class VerkhovnaRada
+        public static class VerkhovnaRada
         {
-            public void Run()
+            public static void Run()
             {
                 Console.ReadLine();
                 var groupCount = Regex.Replace(Console.ReadLine().Trim(), "[ ]{2,}", " ")
