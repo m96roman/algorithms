@@ -334,5 +334,51 @@ namespace Algotester
                 }
             }
         }
+
+        public static class PotatoInBasement
+        {
+            public static void Run()
+            {
+                var dimension = Console.ReadLine().Trim().Split(' ').Select(int.Parse).ToArray();
+
+                var height = dimension[0];
+                var width = dimension[1];
+
+                var basement = new int[height][];
+
+                for (var i = 0; i < height; ++i)
+                {
+                    var amounts = Console.ReadLine().Trim().Split(' ').Select(int.Parse).ToArray();
+                    basement[i] = amounts;
+                }
+
+                var totalAmount = basement.Sum(it => it.Sum());
+                Console.WriteLine(totalAmount);
+
+                for (var i = height - 1; i >= 0; --i)
+                {
+                    MoveToBottomDiagonallyAndWrite(i, width - 1, height, basement);
+                }
+
+                for (var i = width - 2; i >= 0; --i)
+                {
+                    MoveToBottomDiagonallyAndWrite(0, i, height, basement);
+                }
+            }
+
+            private static void MoveToBottomDiagonallyAndWrite(int i, int j, int height, int[][] bs)
+            {
+                while (j >= 0 && i < height)
+                {
+                    for(var l = bs[i][j]; l > 0; --l)
+                    {
+                        Console.WriteLine($"{i + 1} {j + 1} {l}");
+                    }
+
+                    --j;
+                    ++i;
+                }
+            }
+        }
     }
 }
