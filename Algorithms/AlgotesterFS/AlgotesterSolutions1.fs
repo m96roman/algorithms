@@ -39,4 +39,16 @@ let HowMuchToPay () =
 
     printf "%d" result
 
+let HotDaysofPenguins () =
+    let dimensions = Console.ReadLine().Trim().Split ' ' |> Array.map int
+
+    let canDrink (dim:int[]) = 
+        dim.[0] <= dim.[1] && dim.[0] <= dim.[2] + dim.[3]
+
+    let result = 
+        if canDrink dimensions 
+            then "Three times Sex on the Beach, please!"
+            else "Forget about the cocktails, man!"
+
+    printf "%s" result
 
