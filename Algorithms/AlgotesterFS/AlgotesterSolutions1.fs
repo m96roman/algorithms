@@ -29,3 +29,14 @@ let TwoRoads () =
         getTotaltDistance()
 
     printf "%d" totalDistance
+
+let HowMuchToPay () =
+    let amounts = Console.ReadLine().Trim().Split ' ' |> Array.map int
+    
+    let result = 
+        if Math.Abs(amounts.[0] - amounts.[1]) <= 1 then -1
+        else (amounts |> Array.min) + 1
+
+    printf "%d" result
+
+
