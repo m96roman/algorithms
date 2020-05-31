@@ -285,5 +285,54 @@ namespace Algotester
                 return numbers.Aggregate(numbers[1], (gcd, item) => Gcd(gcd, item));
             }
         }
+
+        public static class KoliaVasiaTennis
+        {
+            public static void Run()
+            {
+                Console.ReadLine();
+                var gameStatuses = Console.ReadLine().Trim();
+
+                var koliaCount = 0;
+                var vasiaCount = 0;
+
+                var koliaWins = 0;
+                var vasiaWins = 0;
+
+                foreach(var status in gameStatuses)
+                {
+                    if(status == 'K')
+                    {
+                        ++koliaCount;
+                    }
+                    else
+                    {
+                        ++vasiaCount;
+                    }
+
+                    if(Math.Max(koliaCount, vasiaCount) >= 11 && Math.Abs(koliaCount - vasiaCount) >= 2)
+                    {
+                        if(koliaCount > vasiaCount)
+                        {
+                            ++koliaWins;
+                        }
+                        else
+                        {
+                            ++vasiaWins;
+                        }
+
+                        koliaCount = 0;
+                        vasiaCount = 0;
+                    }
+                }
+
+                Console.WriteLine($"{koliaWins}:{vasiaWins}");
+
+                if(koliaCount != 0 || vasiaCount != 0)
+                {
+                    Console.WriteLine($"{koliaCount}:{vasiaCount}");
+                }
+            }
+        }
     }
 }
