@@ -52,3 +52,18 @@ let HotDaysofPenguins () =
 
     printf "%s" result
 
+let CatAndString () =
+    let readStr () =
+        Console.ReadLine().Trim()
+
+    let rec solveInternal = function
+        | (first::str, lastLetter, toInsert) when first = lastLetter -> solveInternal (str, first, toInsert + 1)
+        | (first::str, _, toInsert) -> solveInternal(str, first, toInsert)
+        | ([], _, toInsert) -> toInsert
+
+    let solve str = 
+        solveInternal (Seq.toList str, '|', 0)
+
+    let result = readStr() |> solve
+
+    printf "%d" result
