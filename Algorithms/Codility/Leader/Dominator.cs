@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Codility.Leader
 {
@@ -19,7 +17,7 @@ namespace Codility.Leader
                     candidateValue = el;
                     ++candidateCount;
                 }
-                else if(candidateValue != el)
+                else if (candidateValue != el)
                 {
                     --candidateCount;
                 }

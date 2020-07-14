@@ -27,7 +27,7 @@ namespace Codility.CaterpillarMethod
             var right = sequence.Length - 1;
 
             var absDistinctCount = A.Length - sequence.Length;
-            
+
             while (left <= right)
             {
                 while (left + 1 <= right && sequence[left] == sequence[left + 1])

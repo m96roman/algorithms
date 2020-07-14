@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 
 namespace Codility.Sorting
 {
@@ -10,7 +7,7 @@ namespace Codility.Sorting
         public int solution(int[] A)
         {
             var circlesPoints = A
-                .SelectMany((it, i) =>  new[]
+                .SelectMany((it, i) => new[]
                 {
                     new {Position = (long)i - it, IsBeginning = true},
                     new {Position = (long)i + it, IsBeginning = false}

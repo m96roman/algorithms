@@ -11,7 +11,7 @@ namespace Codility.DynamicProgramming
             var max = 0;
             var sum = 0;
 
-            for(var i = 0; i < A.Length; ++i)
+            for (var i = 0; i < A.Length; ++i)
             {
                 sequence[i] = Math.Abs(A[i]);
                 max = Math.Max(max, sequence[i]);
@@ -27,10 +27,10 @@ namespace Codility.DynamicProgramming
 
             var dp = Enumerable.Repeat(-1, sum + 1).ToArray();
             dp[0] = 0;
-            
+
             for (var i = 1; i < occurence.Length; ++i)
             {
-                if(occurence[i] == 0)
+                if (occurence[i] == 0)
                 {
                     continue;
                 }

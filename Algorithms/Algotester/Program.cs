@@ -1,14 +1,10 @@
-﻿using System;
-using System.Linq;
-using System.Text.RegularExpressions;
-
-namespace Algotester
+﻿namespace Algotester
 {
     class Program
     {
         static void Main(string[] args)
         {
-           
+
         }
     }
 }

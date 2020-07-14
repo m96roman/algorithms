@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Text;
-
-namespace Codility.Iterations
+﻿namespace Codility.Iterations
 {
     public class BinaryGap
     {
@@ -20,7 +15,7 @@ namespace Codility.Iterations
                 {
                     zeroCount++;
                 }
-                else if(binaryDigit == 1)
+                else if (binaryDigit == 1)
                 {
                     if (zeroCount > maxZeroCount)
                     {

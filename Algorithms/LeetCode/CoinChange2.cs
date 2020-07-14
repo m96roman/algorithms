@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace LeetCode
+﻿namespace LeetCode
 {
     public class CoinChange2
     {
@@ -10,7 +6,7 @@ namespace LeetCode
         {
             var dp = new int[coins.Length + 1][];
 
-            for(var i = 0; i < dp.Length; ++i)
+            for (var i = 0; i < dp.Length; ++i)
             {
                 dp[i] = new int[amount + 1];
                 dp[i][0] = 1;

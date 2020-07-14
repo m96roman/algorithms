@@ -10,7 +10,7 @@ namespace Codility.PrimeAndCompositeNumbers
             {
                 if (N % i == 0)
                 {
-                    return 2 * (i + N/i);
+                    return 2 * (i + N / i);
                 }
             }
 

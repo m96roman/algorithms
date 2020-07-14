@@ -8,7 +8,7 @@ namespace Codility.StacksAndQueues
         {
             var wall = new Stack<int>();
             var countOfBlocks = 0;
-            
+
             foreach (var height in H)
             {
                 while (wall.Count > 0 && wall.Peek() > height)

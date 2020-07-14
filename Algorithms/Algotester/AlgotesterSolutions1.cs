@@ -299,9 +299,9 @@ namespace Algotester
                 var koliaWins = 0;
                 var vasiaWins = 0;
 
-                foreach(var status in gameStatuses)
+                foreach (var status in gameStatuses)
                 {
-                    if(status == 'K')
+                    if (status == 'K')
                     {
                         ++koliaCount;
                     }
@@ -310,9 +310,9 @@ namespace Algotester
                         ++vasiaCount;
                     }
 
-                    if(Math.Max(koliaCount, vasiaCount) >= 11 && Math.Abs(koliaCount - vasiaCount) >= 2)
+                    if (Math.Max(koliaCount, vasiaCount) >= 11 && Math.Abs(koliaCount - vasiaCount) >= 2)
                     {
-                        if(koliaCount > vasiaCount)
+                        if (koliaCount > vasiaCount)
                         {
                             ++koliaWins;
                         }
@@ -328,7 +328,7 @@ namespace Algotester
 
                 Console.WriteLine($"{koliaWins}:{vasiaWins}");
 
-                if(koliaCount != 0 || vasiaCount != 0)
+                if (koliaCount != 0 || vasiaCount != 0)
                 {
                     Console.WriteLine($"{koliaCount}:{vasiaCount}");
                 }
@@ -370,7 +370,7 @@ namespace Algotester
             {
                 while (j >= 0 && i < height)
                 {
-                    for(var l = bs[i][j]; l > 0; --l)
+                    for (var l = bs[i][j]; l > 0; --l)
                     {
                         Console.WriteLine($"{i + 1} {j + 1} {l}");
                     }

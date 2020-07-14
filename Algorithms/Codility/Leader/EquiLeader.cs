@@ -60,8 +60,8 @@ namespace Codility.Leader
 
             var countOfLeader = A.Count(it => it == candidateValue);
 
-            return countOfLeader > A.Length / 2 
-                ? new Tuple<int, int>(candidateValue, candidateCount) 
+            return countOfLeader > A.Length / 2
+                ? new Tuple<int, int>(candidateValue, candidateCount)
                 : null;
         }
     }

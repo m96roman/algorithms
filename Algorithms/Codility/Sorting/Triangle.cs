@@ -22,7 +22,7 @@ namespace Codility.Sorting
                 var second = sorted[i + 1];
                 var third = sorted[i + 2];
 
-                var isTriangle = 
+                var isTriangle =
                     (long)first + second > third &&
                     (long)second + third > first &&
                     (long)third + first > second;

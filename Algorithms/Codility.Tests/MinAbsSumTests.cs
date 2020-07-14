@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Codility.DynamicProgramming;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
+﻿using Codility.DynamicProgramming;
 using Xunit;
 
 namespace Codility.Tests
@@ -17,7 +13,7 @@ namespace Codility.Tests
         }
 
         [Theory]
-        [InlineData(new[]{ 1, 5, 2, -2}, 0)]
+        [InlineData(new[] { 1, 5, 2, -2 }, 0)]
         public void Test1(int[] input, int expected)
         {
             var actual = _fixture.solution(input);

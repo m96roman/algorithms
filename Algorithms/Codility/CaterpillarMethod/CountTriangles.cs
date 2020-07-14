@@ -23,7 +23,7 @@ namespace Codility.CaterpillarMethod
 
                 for (var secondV = firstV + 1; secondV < orderedSequence.Length - 1; ++secondV)
                 {
-                    while (thirdV < orderedSequence.Length &&  orderedSequence[firstV] + orderedSequence[secondV] > orderedSequence[thirdV])
+                    while (thirdV < orderedSequence.Length && orderedSequence[firstV] + orderedSequence[secondV] > orderedSequence[thirdV])
                     {
                         ++thirdV;
                     }

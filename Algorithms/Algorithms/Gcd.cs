@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Algorithms
 {
-    static class Gcd
+    public static class Gcd
     {
         public static int Calculate(int[] numbers)
         {
