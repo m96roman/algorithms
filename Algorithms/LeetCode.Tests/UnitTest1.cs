@@ -29,5 +29,19 @@ namespace LeetCode.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(12, 30, 165)]
+        [InlineData(3, 30, 75)]
+        [InlineData(3, 15, 7.5)]
+        [InlineData(4, 50, 155)]
+        [InlineData(24, 0, 0)]
+        public void AngleBetweenHandsOfaClock_AngleClock(int hour, int minutes, double expected)
+        {
+            var algo = new AngleBetweenHandsOfaClock();
+            var actual = algo.AngleClock(hour, minutes);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
