@@ -43,5 +43,31 @@ namespace LeetCode.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData("the sky is blue", "blue is sky the")]
+        [InlineData("  hello world!  ", "world! hello")]
+        [InlineData("a good   example", "example good a")]
+        public void ReverseWordsInAString_ReverseWords(string s, string expected)
+        {
+            var algo = new ReverseWordsInAString();
+            var actual = algo.ReverseWords(s);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData(5, 2)]
+        [InlineData(8, 3)]
+        [InlineData(1, 1)]
+        [InlineData(3, 2)]
+        [InlineData(1804289383, 60070)]
+        public void ArrangingCoins_ArrangeCoins(int n, int expected)
+        {
+            var algo = new ArrangingCoins();
+            var actual = algo.ArrangeCoins(n);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
