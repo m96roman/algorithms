@@ -83,5 +83,19 @@ namespace LeetCode.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(0, 1)]
+        [InlineData(1, 1)]
+        [InlineData(2, 2)]
+        [InlineData(3, 5)]
+        [InlineData(4, 14)]
+        public void UniqueBinarySearchTrees_NumTrees(int n, int expected)
+        {
+            var algo = new UniqueBinarySearchTrees();
+            var actual = algo.NumTrees(n);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
