@@ -69,5 +69,19 @@ namespace LeetCode.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(new[] { 1, 2, 5 }, 11, 3)]
+        [InlineData(new[] { 2, 5, 10, 1 }, 27, 4)]
+        [InlineData(new[] { 1, 2, 3, 4 }, 6, 2)]
+        [InlineData(new[] { 2 }, 3, -1)]
+        [InlineData(new[] { 186, 419, 83, 408 }, 6249, 20)]
+        public void CoinChange_Change(int[] coins, int amount, int expected)
+        {
+            var algo = new CoinChange();
+            var actual = algo.Change(coins, amount);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
