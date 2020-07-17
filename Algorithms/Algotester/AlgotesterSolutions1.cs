@@ -18,7 +18,7 @@ namespace Algotester
                 for (var i = 0; i < friendsCount; ++i)
                 {
                     var str = Regex.Replace(Console.ReadLine(), "[ ]{2,}", " ");
-                    var friendWish = str.Split(" ").Select(int.Parse).ToArray();
+                    var friendWish = str.Split(' ').Select(int.Parse).ToArray();
                     wishes[i] = friendWish;
 
                     A += friendWish[0];
@@ -76,7 +76,7 @@ namespace Algotester
 
                 var postionsInput = Regex.Replace(Console.ReadLine().Trim(), "[ ]{2,}", " ");
                 var positions = postionsInput
-                    .Split(" ")
+                    .Split(' ')
                     .Select(int.Parse)
                     .ToArray();
 
@@ -97,7 +97,7 @@ namespace Algotester
             public static void Run()
             {
                 var str = Regex.Replace(Console.ReadLine().Trim(), "[ ]{2,}", " ");
-                var dimension = str.Split(" ").Select(int.Parse).ToArray();
+                var dimension = str.Split(' ').Select(int.Parse).ToArray();
 
                 string winner;
 
@@ -134,7 +134,7 @@ namespace Algotester
             public static void Run()
             {
                 var str = Regex.Replace(Console.ReadLine().Trim(), "[ ]{2,}", " ");
-                var counts = str.Split(" ").Select(long.Parse).ToArray();
+                var counts = str.Split(' ').Select(long.Parse).ToArray();
 
                 var result = counts[0] + counts[1] > counts[2] ? "YES" : "NO";
 
@@ -148,7 +148,7 @@ namespace Algotester
             {
                 var input = Console.ReadLine()
                     .Trim()
-                    .Split(" ")
+                    .Split(' ')
                     .Select(double.Parse)
                     .ToArray();
 
@@ -166,7 +166,7 @@ namespace Algotester
             {
                 var input = Console.ReadLine()
                     .Trim()
-                    .Split(" ")
+                    .Split(' ')
                     .Select(int.Parse)
                     .ToArray();
 
@@ -175,7 +175,7 @@ namespace Algotester
 
                 var teethSharpnessInput = Regex.Replace(Console.ReadLine().Trim(), "[ ]{2,}", " ");
                 var teethSharpness = teethSharpnessInput
-                    .Split(" ")
+                    .Split(' ')
                     .Select(int.Parse)
                     .ToArray();
 
@@ -209,13 +209,13 @@ namespace Algotester
 
                 var sweetsInput1 = Regex.Replace(Console.ReadLine().Trim(), "[ ]{2,}", " ");
                 var sweets1 = sweetsInput1
-                    .Split(" ")
+                    .Split(' ')
                     .Select(int.Parse)
                     .ToArray();
 
                 var sweetsInput2 = Regex.Replace(Console.ReadLine().Trim(), "[ ]{2,}", " ");
                 var sweets2 = sweetsInput2
-                    .Split(" ")
+                    .Split(' ')
                     .Select(int.Parse)
                     .ToArray();
 
@@ -239,7 +239,7 @@ namespace Algotester
 
                 var positionInput = Console.ReadLine();
                 var position = positionInput
-                    .Split(" ")
+                    .Split(' ')
                     .Select(int.Parse)
                     .ToArray();
 
@@ -257,7 +257,7 @@ namespace Algotester
             {
                 Console.ReadLine();
                 var groupCount = Regex.Replace(Console.ReadLine().Trim(), "[ ]{2,}", " ")
-                    .Split(" ")
+                    .Split(' ')
                     .Select(int.Parse)
                     .ToArray();
 
