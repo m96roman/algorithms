@@ -9,15 +9,15 @@ namespace Algotester
     {
         public static class BorsсhPotatoSalad
         {
-            public static void Run()
+            public static void Run(TextReader reader, TextWriter writer)
             {
-                var friendsCount = int.Parse(Console.ReadLine());
+                var friendsCount = int.Parse(reader.ReadLine());
                 int A = 0, B = 0, C = 0;
                 var wishes = new int[friendsCount][];
 
                 for (var i = 0; i < friendsCount; ++i)
                 {
-                    var str = Regex.Replace(Console.ReadLine(), "[ ]{2,}", " ");
+                    var str = Regex.Replace(reader.ReadLine(), "[ ]{2,}", " ");
                     var friendWish = str.Split(' ').Select(int.Parse).ToArray();
                     wishes[i] = friendWish;
 
@@ -41,7 +41,7 @@ namespace Algotester
                         Math.Abs(wishes[i][2] - c);
                 }
 
-                Console.WriteLine(complaint);
+                writer.WriteLine(complaint);
             }
         }
 
@@ -70,11 +70,11 @@ namespace Algotester
 
         public static class ElephantsCoach
         {
-            public static void Run()
+            public static void Run(TextReader reader, TextWriter writer)
             {
-                Console.ReadLine();
+                reader.ReadLine();
 
-                var postionsInput = Regex.Replace(Console.ReadLine().Trim(), "[ ]{2,}", " ");
+                var postionsInput = Regex.Replace(reader.ReadLine().Trim(), "[ ]{2,}", " ");
                 var positions = postionsInput
                     .Split(' ')
                     .Select(int.Parse)
@@ -88,15 +88,15 @@ namespace Algotester
                     ? orderedPositions.Last() - orderedPositions.First()
                     : 0;
 
-                Console.WriteLine(stepsCount);
+                writer.WriteLine(stepsCount);
             }
         }
 
         public static class InterestingGame
         {
-            public static void Run()
+            public static void Run(TextReader reader, TextWriter writer)
             {
-                var str = Regex.Replace(Console.ReadLine().Trim(), "[ ]{2,}", " ");
+                var str = Regex.Replace(reader.ReadLine().Trim(), "[ ]{2,}", " ");
                 var dimension = str.Split(' ').Select(int.Parse).ToArray();
 
                 string winner;
@@ -110,43 +110,43 @@ namespace Algotester
                     winner = "Dragon";
                 }
 
-                Console.WriteLine(winner);
+                writer.WriteLine(winner);
             }
         }
 
         public static class MaryAndCookies
         {
-            public static void Run()
+            public static void Run(TextReader reader, TextWriter writer)
             {
-                Console.ReadLine();
-                var str = Regex.Replace(Console.ReadLine(), "[ ]{2,}", " ");
+                reader.ReadLine();
+                var str = Regex.Replace(reader.ReadLine(), "[ ]{2,}", " ");
 
                 var result = str.Trim().Split()
                     .Select(it => long.Parse(it))
                     .Sum(it => it > 1 ? it - 1 : 0);
 
-                Console.WriteLine(result);
+                writer.WriteLine(result);
             }
         }
 
         public static class Oranges
         {
-            public static void Run()
+            public static void Run(TextReader reader, TextWriter writer)
             {
-                var str = Regex.Replace(Console.ReadLine().Trim(), "[ ]{2,}", " ");
+                var str = Regex.Replace(reader.ReadLine().Trim(), "[ ]{2,}", " ");
                 var counts = str.Split(' ').Select(long.Parse).ToArray();
 
                 var result = counts[0] + counts[1] > counts[2] ? "YES" : "NO";
 
-                Console.WriteLine(result);
+                writer.WriteLine(result);
             }
         }
 
         public static class PetrosCake
         {
-            public static void Run()
+            public static void Run(TextReader reader, TextWriter writer)
             {
-                var input = Console.ReadLine()
+                var input = reader.ReadLine()
                     .Trim()
                     .Split(' ')
                     .Select(double.Parse)
@@ -156,15 +156,15 @@ namespace Algotester
                 var radius = input[1];
 
                 var result = radius / Math.Sqrt(count);
-                Console.WriteLine(result);
+                writer.WriteLine(result);
             }
         }
 
         public static class Teeth
         {
-            public static void Run()
+            public static void Run(TextReader reader, TextWriter writer)
             {
-                var input = Console.ReadLine()
+                var input = reader.ReadLine()
                     .Trim()
                     .Split(' ')
                     .Select(int.Parse)
@@ -173,7 +173,7 @@ namespace Algotester
                 var count = input[0];
                 var sharp = input[1];
 
-                var teethSharpnessInput = Regex.Replace(Console.ReadLine().Trim(), "[ ]{2,}", " ");
+                var teethSharpnessInput = Regex.Replace(reader.ReadLine().Trim(), "[ ]{2,}", " ");
                 var teethSharpness = teethSharpnessInput
                     .Split(' ')
                     .Select(int.Parse)
@@ -197,23 +197,23 @@ namespace Algotester
 
                 maxCount = Math.Max(maxCount, currentCount);
 
-                Console.WriteLine(maxCount);
+                writer.WriteLine(maxCount);
             }
         }
 
         public static class Helloween
         {
-            public static void Run()
+            public static void Run(TextReader reader, TextWriter writer)
             {
-                Console.ReadLine();
+                reader.ReadLine();
 
-                var sweetsInput1 = Regex.Replace(Console.ReadLine().Trim(), "[ ]{2,}", " ");
+                var sweetsInput1 = Regex.Replace(reader.ReadLine().Trim(), "[ ]{2,}", " ");
                 var sweets1 = sweetsInput1
                     .Split(' ')
                     .Select(int.Parse)
                     .ToArray();
 
-                var sweetsInput2 = Regex.Replace(Console.ReadLine().Trim(), "[ ]{2,}", " ");
+                var sweetsInput2 = Regex.Replace(reader.ReadLine().Trim(), "[ ]{2,}", " ");
                 var sweets2 = sweetsInput2
                     .Split(' ')
                     .Select(int.Parse)
@@ -224,20 +224,20 @@ namespace Algotester
 
                 var sweetsPrice = sweets1Min + sweets2Min;
 
-                Console.WriteLine(sweetsPrice);
+                writer.WriteLine(sweetsPrice);
             }
         }
 
         public static class Robot
         {
-            public static void Run()
+            public static void Run(TextReader reader, TextWriter writer)
             {
-                var commands = Console.ReadLine();
+                var commands = reader.ReadLine();
 
                 var rightCommands = commands.Where(it => it == 'R').Count();
                 var upCommands = commands.Where(it => it == 'U').Count();
 
-                var positionInput = Console.ReadLine();
+                var positionInput = reader.ReadLine();
                 var position = positionInput
                     .Split(' ')
                     .Select(int.Parse)
@@ -247,16 +247,16 @@ namespace Algotester
                     ? "YES"
                     : "NO";
 
-                Console.WriteLine(result);
+                writer.WriteLine(result);
             }
         }
 
         public static class VerkhovnaRada
         {
-            public static void Run()
+            public static void Run(TextReader reader, TextWriter writer)
             {
-                Console.ReadLine();
-                var groupCount = Regex.Replace(Console.ReadLine().Trim(), "[ ]{2,}", " ")
+                reader.ReadLine();
+                var groupCount = Regex.Replace(reader.ReadLine().Trim(), "[ ]{2,}", " ")
                     .Split(' ')
                     .Select(int.Parse)
                     .ToArray();
@@ -264,7 +264,7 @@ namespace Algotester
                 var gcd = Gcd(groupCount);
                 var result = groupCount.Select(it => (long)(it / gcd)).Sum();
 
-                Console.WriteLine(result);
+                writer.WriteLine(result);
             }
 
             private static int Gcd(int a, int b)
@@ -285,10 +285,10 @@ namespace Algotester
 
         public static class KoliaVasiaTennis
         {
-            public static void Run()
+            public static void Run(TextReader reader, TextWriter writer)
             {
-                Console.ReadLine();
-                var gameStatuses = Console.ReadLine().Trim();
+                reader.ReadLine();
+                var gameStatuses = reader.ReadLine().Trim();
 
                 var koliaCount = 0;
                 var vasiaCount = 0;
@@ -323,20 +323,20 @@ namespace Algotester
                     }
                 }
 
-                Console.WriteLine($"{koliaWins}:{vasiaWins}");
+                writer.WriteLine($"{koliaWins}:{vasiaWins}");
 
                 if (koliaCount != 0 || vasiaCount != 0)
                 {
-                    Console.WriteLine($"{koliaCount}:{vasiaCount}");
+                    writer.WriteLine($"{koliaCount}:{vasiaCount}");
                 }
             }
         }
 
         public static class PotatoInBasement
         {
-            public static void Run()
+            public static void Run(TextReader reader, TextWriter writer)
             {
-                var dimension = Console.ReadLine().Trim().Split(' ').Select(int.Parse).ToArray();
+                var dimension = reader.ReadLine().Trim().Split(' ').Select(int.Parse).ToArray();
 
                 var height = dimension[0];
                 var width = dimension[1];
@@ -345,31 +345,31 @@ namespace Algotester
 
                 for (var i = 0; i < height; ++i)
                 {
-                    var amounts = Console.ReadLine().Trim().Split(' ').Select(int.Parse).ToArray();
+                    var amounts = reader.ReadLine().Trim().Split(' ').Select(int.Parse).ToArray();
                     basement[i] = amounts;
                 }
 
                 var totalAmount = basement.Sum(it => it.Sum());
-                Console.WriteLine(totalAmount);
+                writer.WriteLine(totalAmount);
 
                 for (var i = height - 1; i >= 0; --i)
                 {
-                    MoveToBottomDiagonallyAndWrite(i, width - 1, height, basement);
+                    MoveToBottomDiagonallyAndWrite(writer, i, width - 1, height, basement);
                 }
 
                 for (var i = width - 2; i >= 0; --i)
                 {
-                    MoveToBottomDiagonallyAndWrite(0, i, height, basement);
+                    MoveToBottomDiagonallyAndWrite(writer, 0, i, height, basement);
                 }
             }
 
-            private static void MoveToBottomDiagonallyAndWrite(int i, int j, int height, int[][] bs)
+            private static void MoveToBottomDiagonallyAndWrite(TextWriter writer, int i, int j, int height, int[][] bs)
             {
                 while (j >= 0 && i < height)
                 {
                     for (var l = bs[i][j]; l > 0; --l)
                     {
-                        Console.WriteLine($"{i + 1} {j + 1} {l}");
+                        writer.WriteLine($"{i + 1} {j + 1} {l}");
                     }
 
                     --j;
