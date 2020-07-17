@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Algorithms;
 
 namespace Algotester
 {
@@ -261,25 +262,10 @@ namespace Algotester
                     .Select(int.Parse)
                     .ToArray();
 
-                var gcd = Gcd(groupCount);
+                var gcd = Gcd.Calculate(groupCount);
                 var result = groupCount.Select(it => (long)(it / gcd)).Sum();
 
                 writer.WriteLine(result);
-            }
-
-            private static int Gcd(int a, int b)
-            {
-                if (a == 0)
-                {
-                    return b;
-                }
-
-                return Gcd(b % a, a);
-            }
-
-            private static int Gcd(int[] numbers)
-            {
-                return numbers.Aggregate(numbers[1], (gcd, item) => Gcd(gcd, item));
             }
         }
 
