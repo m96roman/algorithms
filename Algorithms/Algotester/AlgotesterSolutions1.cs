@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -46,28 +47,24 @@ namespace Algotester
 
         public static class DeputyMoney
         {
-            public static void Run()
+            public static void Run(TextReader reader, TextWriter writer)
             {
-                var input = Console.ReadLine();
+                var input = reader.ReadLine();
                 var money = int.Parse(input.Trim());
 
-                var bills = new int[] { 500, 200, 100, 50, 20, 10, 5, 2, 1 };
+                var bills = new[] { 500, 200, 100, 50, 20, 10, 5, 2, 1 };
 
                 var billsCount = 0;
-                while (money > 0)
+                foreach (var bill in bills)
                 {
-                    for (var i = 0; i < bills.Length; ++i)
+                    while (money >= bill)
                     {
-                        if (money >= bills[i])
-                        {
-                            money -= bills[i];
-                            billsCount += 1;
-                            break;
-                        }
+                        money -= bill;
+                        billsCount += 1;
                     }
                 }
 
-                Console.WriteLine(billsCount);
+                writer.WriteLine(billsCount);
             }
         }
 
