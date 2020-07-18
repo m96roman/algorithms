@@ -1,5 +1,6 @@
 ﻿using Codility.DynamicProgramming;
 using Codility.EuclideanAlgorithm;
+using Codility.FibonacciNumbers;
 using Codility.MaximumSliceProblem;
 using Xunit;
 
@@ -40,6 +41,17 @@ namespace Codility.Tests
         {
             var algo = new ChocolatesByNumbers();
             var actual = algo.solution(N, M);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData(new[] { 4, 4, 5, 5, 1 }, new[] { 3, 2, 4, 3, 1 }, new[] { 5, 1, 8, 0, 1 })]
+        [InlineData(new[] { 4, 4, 5, 5, 1 }, new[] { 2, 2, 2, 2, 2 }, new[] { 1, 1, 0, 0, 1 })]
+        public void Ladder(int[] A, int[] B, int[] expected)
+        {
+            var algo = new Ladder();
+            var actual = algo.solution(A, B);
 
             Assert.Equal(expected, actual);
         }
