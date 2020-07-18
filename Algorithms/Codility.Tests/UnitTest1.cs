@@ -1,5 +1,5 @@
-﻿using System.IO.Compression;
-using Codility.DynamicProgramming;
+﻿using Codility.DynamicProgramming;
+using Codility.EuclideanAlgorithm;
 using Codility.MaximumSliceProblem;
 using Xunit;
 
@@ -29,6 +29,17 @@ namespace Codility.Tests
         {
             var algo = new MaxDoubleSliceSum();
             var actual = algo.solution(input);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData(10, 4, 5)]
+        [InlineData(10, 3, 10)]
+        public void ChocolatesByNumbers(int N, int M, int expected)
+        {
+            var algo = new ChocolatesByNumbers();
+            var actual = algo.solution(N, M);
 
             Assert.Equal(expected, actual);
         }
