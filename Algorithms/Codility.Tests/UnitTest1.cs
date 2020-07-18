@@ -55,5 +55,21 @@ namespace Codility.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(new[] { 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0 }, 3)]
+        [InlineData(new[] { 0, 0, 0, 1, 1, 0, 0, 0 }, -1)]
+        [InlineData(new[] { 0, 0, 0, 0 }, 1)]
+        [InlineData(new[] { 1, 1, 1, 1, 1, 1 }, 2)]
+        [InlineData(new[] { 0, 0, 0, 1, 0, 1 }, -1)]
+        [InlineData(new[] { 0 }, 1)]
+        [InlineData(new int[] { }, 1)]
+        public void FibFrog(int[] A, int expected)
+        {
+            var algo = new FibFrog();
+            var actual = algo.solution(A);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
