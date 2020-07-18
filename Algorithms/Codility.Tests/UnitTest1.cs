@@ -1,6 +1,7 @@
 ﻿using Codility.DynamicProgramming;
 using Codility.EuclideanAlgorithm;
 using Codility.FibonacciNumbers;
+using Codility.GreedyAlgorithms;
 using Codility.MaximumSliceProblem;
 using Xunit;
 
@@ -68,6 +69,18 @@ namespace Codility.Tests
         {
             var algo = new FibFrog();
             var actual = algo.solution(A);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData(new[] { 1, 3, 7, 9, 9 }, new[] { 5, 6, 8, 9, 10 }, 3)]
+        [InlineData(new[] { 1, 3 }, new[] { 4, 8 }, 1)]
+        [InlineData(new int[] {  }, new int[] { }, 0)]
+        public void MaxNonoverlappingSegments(int[] A, int[] B, int expected)
+        {
+            var algo = new MaxNonoverlappingSegments();
+            var actual = algo.solution(A, B);
 
             Assert.Equal(expected, actual);
         }
