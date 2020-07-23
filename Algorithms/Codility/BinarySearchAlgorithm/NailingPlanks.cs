@@ -1,4 +1,7 @@
-﻿namespace Codility.BinarySearchAlgorithm
+﻿using System;
+using Algorithms;
+
+namespace Codility.BinarySearchAlgorithm
 {
     public class NailingPlanks
     {
@@ -10,11 +13,8 @@
             var start = 1;
             var end = planksCount;
 
-            var result = -1;
-
-            while (start <= end)
+            return BinarySearch.Search(start, end, (mid, isLast) =>
             {
-                var mid = (start + end) / 2;
                 var prefixSum = new int[2 * nailsCount + 1];
 
                 for (var i = 0; i < mid; ++i)
@@ -38,18 +38,12 @@
                     }
                 }
 
-                if (allPlanksAreNailed)
-                {
-                    end = mid - 1;
-                    result = mid;
-                }
-                else
-                {
-                    start = mid + 1;
-                }
-            }
-
-            return result;
+                return allPlanksAreNailed
+                    ? BinarySearch.Action.MoveLeft
+                    : isLast
+                        ? BinarySearch.Action.NotFound
+                        : BinarySearch.Action.MoveRight;
+            });
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Algorithms;
 
 namespace Codility.BinarySearchAlgorithm
 {
@@ -13,12 +14,8 @@ namespace Codility.BinarySearchAlgorithm
             var lowerBound = Math.Max(maxElement, sumOfElements / K);
             var upperBound = sumOfElements;
 
-            var result = upperBound;
-
-            while (lowerBound <= upperBound)
+            return BinarySearch.Search(lowerBound, upperBound, (mid, _) =>
             {
-                var mid = (lowerBound + upperBound) / 2;
-
                 var blockLength = mid + 1;
                 var blocksCount = 0;
 
@@ -38,18 +35,8 @@ namespace Codility.BinarySearchAlgorithm
                     }
                 }
 
-                if (blocksCount > K)
-                {
-                    lowerBound = mid + 1;
-                }
-                else
-                {
-                    upperBound = mid - 1;
-                    result = mid;
-                }
-            }
-
-            return result;
+                return blocksCount > K ? BinarySearch.Action.MoveRight : BinarySearch.Action.MoveLeft;
+            });
         }
     }
 }
