@@ -108,5 +108,17 @@ namespace Codility.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(3, 5, new[] { 2, 1, 5, 1, 2, 2, 2 }, 6)]
+        [InlineData(3, 5, new[] { 3, 3, 3, 3, 3, 3, 3, 3, 3 }, 9)]
+        [InlineData(2, 5, new[] { 3, 2, 4 }, 5)]
+        public void MinMaxDivision(int K, int M, int[] A, int expected)
+        {
+            var algo = new MinMaxDivision();
+            var actual = algo.solution(K, M, A);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
