@@ -1,4 +1,5 @@
-﻿using Codility.DynamicProgramming;
+﻿using Codility.BinarySearchAlgorithm;
+using Codility.DynamicProgramming;
 using Codility.EuclideanAlgorithm;
 using Codility.FibonacciNumbers;
 using Codility.GreedyAlgorithms;
@@ -91,6 +92,19 @@ namespace Codility.Tests
         {
             var algo = new TieRopes();
             var actual = algo.solution(K, A);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData(new[] { 1, 4, 5, 8 }, new[] { 4, 5, 9, 10 }, new[] { 4, 6, 7, 10, 2 }, 4)]
+        [InlineData(new[] { 1, 4, 7 }, new[] { 3, 6, 9 }, new[] { 2, 5, 8, 10, 10 }, 3)]
+        [InlineData(new[] { 1, 4, 7 }, new[] { 3, 6, 9 }, new[] { 0, 5, 8, 10, 10 }, -1)]
+        [InlineData(new[] { 1, 3 }, new[] { 3, 4 }, new[] { 3, 2, 4 }, 1)]
+        public void NailingPlanks(int[] A, int[] B, int[] C, int expected)
+        {
+            var algo = new NailingPlanks();
+            var actual = algo.solution(A, B, C);
 
             Assert.Equal(expected, actual);
         }
