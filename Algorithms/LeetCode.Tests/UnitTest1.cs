@@ -97,5 +97,44 @@ namespace LeetCode.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(15, 4, 19)]
+        [InlineData(9, 3, 13)]
+        public void WaterBottles_NumWaterBottles(int numBottles, int numExchange, int expected)
+        {
+            var algo = new WaterBottles();
+            var actual = algo.NumWaterBottles(numBottles, numExchange);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData(new[] { 1, 3, 5 }, 4)]
+        [InlineData(new[] { 2, 4, 6 }, 0)]
+        [InlineData(new[] { 1, 2, 3, 4, 5, 6, 7 }, 16)]
+        [InlineData(new[] { 10, 100, 99, 99 }, 4)]
+        [InlineData(new[] { 7 }, 1)]
+        [InlineData(new[] { 1, 2 }, 2)]
+        [InlineData(new[] { 1, 2, 3 }, 4)]
+        [InlineData(new[] { 2, 5, 7 }, 3)]
+        public void NumberOfSubArraysWithOddSum_NumOfSubarrays(int[] arr, int expected)
+        {
+            var algo = new NumberOfSubArraysWithOddSum();
+            var actual = algo.NumOfSubarrays(arr);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData(3, 7, 3)]
+        [InlineData(8, 10, 1)]
+        public void CountOddNumbersInAnIntervalRange_CountOdds(int low, int high, int expected)
+        {
+            var algo = new CountOddNumbersInAnIntervalRange();
+            var actual = algo.CountOdds(low, high);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
