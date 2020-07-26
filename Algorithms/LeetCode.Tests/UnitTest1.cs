@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Xunit;
 
 namespace LeetCode.Tests
@@ -135,6 +136,98 @@ namespace LeetCode.Tests
             var actual = algo.CountOdds(low, high);
 
             Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData("codeleet", new[] { 4, 5, 6, 7, 0, 2, 1, 3 }, "leetcode")]
+        [InlineData("aiohn", new[] { 3, 1, 4, 2, 0 }, "nihao")]
+        public void ShuffleString_RestoreString(string s, int[] indices, string expected)
+        {
+            var algo = new ShuffleString(); ;
+            var actual = algo.RestoreString(s, indices);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData("10111", 3)]
+        [InlineData("101", 3)]
+        [InlineData("00000", 0)]
+        [InlineData("001011101", 5)]
+        [InlineData("100", 2)]
+        [InlineData("10100", 4)]
+        public void BulbSwitcherIV_MinFlips(string target, int expected)
+        {
+            var algo = new BulbSwitcherIV();
+            var actual = algo.MinFlips(target);
+
+            Assert.Equal(expected, actual); ;
+        }
+
+        [Theory]
+        [MemberData(nameof(NumberOfGoodLeafNodesPairs_CountPairs_Data))]
+        public void NumberOfGoodLeafNodesPairs_CountPairs(TreeNode root, int distance, int expected)
+        {
+            var algo = new NumberOfGoodLeafNodesPairs();
+            var actual = algo.CountPairs(root, distance);
+
+            Assert.Equal(expected, actual);
+        }
+
+        public static IEnumerable<object[]> NumberOfGoodLeafNodesPairs_CountPairs_Data()
+        {
+            TreeNode ReadBinary(params int?[] tree)
+            {
+                TreeNode ReadNodes(int index)
+                {
+                    if (index >= tree.Length || tree[index] == null)
+                    {
+                        return null;
+                    }
+
+                    var leftChild = ReadNodes(2 * index + 1);
+                    var rightChild = ReadNodes(2 * index + 2);
+
+                    return new TreeNode(tree[index].Value, leftChild, rightChild);
+                }
+
+                return ReadNodes(0);
+            }
+
+            yield return new object[]
+            {
+                ReadBinary(1,2,3,null,4),
+                3,
+                1
+            };
+
+            yield return new object[]
+            {
+                ReadBinary(1,2,3,4,5,6,7),
+                3,
+                2
+            };
+
+            yield return new object[]
+            {
+                ReadBinary(7,1,4,6,null,5,3,null,null,null,null,null,2),
+                3,
+                1
+            };
+
+            yield return new object[]
+            {
+                ReadBinary(100),
+                1,
+                0
+            };
+
+            yield return new object[]
+            {
+                ReadBinary(1,1,1),
+                2,
+                1
+            };
         }
     }
 }
