@@ -229,5 +229,29 @@ namespace LeetCode.Tests
                 1
             };
         }
+
+        [Theory]
+        [InlineData(new[] { 3, 0, 1, 1, 9, 7 }, 7, 2, 3, 4)]
+        [InlineData(new[] { 1, 1, 2, 2, 3 }, 0, 0, 1, 0)]
+        public void CountGoodTriplets_Solve(int[] arr, int a, int b, int c, int expected)
+        {
+            var algo = new CountGoodTriplets();
+            var actual = algo.Solve(arr, a, b, c);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData(new[] { 2, 1, 3, 5, 4, 6, 7 }, 2, 5)]
+        [InlineData(new[] { 1, 11, 22, 33, 44, 55, 66, 77, 88, 99 }, 1000000000, 99)]
+        [InlineData(new[] { 1, 3, 2, 9, 8, 2, 3, 7, 6, 4 }, 8, 9)]
+        [InlineData(new[] { 3, 2, 1 }, 10, 3)]
+        public void FindTheWinnerOfAnArrayGame_GetWinner(int[] arr, int k, int expected)
+        {
+            var algo = new FindTheWinnerOfAnArrayGame();
+            var actual = algo.GetWinner(arr, k);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
