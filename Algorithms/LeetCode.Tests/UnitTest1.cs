@@ -253,5 +253,20 @@ namespace LeetCode.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData("USA", true)]
+        [InlineData("FlaG", false)]
+        [InlineData("leetcode", true)]
+        [InlineData("Google", true)]
+        [InlineData("T", true)]
+        [InlineData("i", true)]
+        public void DetectCapital_DetectCapitalUse(string word, bool expected)
+        {
+            var algo = new DetectCapital();
+            var actual = algo.DetectCapitalUse(word);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
