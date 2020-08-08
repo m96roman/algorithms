@@ -268,5 +268,34 @@ namespace LeetCode.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(new[] { 2, 3, 4, 7, 11 }, 5, 9)]
+        [InlineData(new[] { 1, 2, 3, 4 }, 2, 6)]
+        [InlineData(new[] { 1, 2 }, 1, 3)]
+        [InlineData(new[] { 3, 10 }, 2, 2)]
+        [InlineData(new[] { 3, 10 }, 3, 4)]
+        public void KthMissingPositiveNumber_FindKthPositive(int[] arr, int k, int expected)
+        {
+            var algo = new KthMissingPositiveNumber();
+            var actual = algo.FindKthPositive(arr, k);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData("input", "ouput", 9, true)]
+        [InlineData("abc", "bcd", 10, false)]
+        [InlineData("aab", "bbb", 27, true)]
+        [InlineData("abc", "abcd", 1000, false)]
+        [InlineData("atmtxzjkz", "tvbtjhvjd", 35, false)]
+        [InlineData("mpzzwh", "kaeblv", 24, true)]
+        public void CanConvertStringInKMoves_CanConvertString(string s, string t, int k, bool expected)
+        {
+            var algo = new CanConvertStringInKMoves();
+            var actual = algo.CanConvertString(s, t, k);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
