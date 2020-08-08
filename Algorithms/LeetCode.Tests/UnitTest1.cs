@@ -297,5 +297,19 @@ namespace LeetCode.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData("(()))", 1)]
+        [InlineData("())", 0)]
+        [InlineData("))())(", 3)]
+        [InlineData("((((((", 12)]
+        [InlineData(")))))))", 5)]
+        public void MinimumInsertionsToBalanceAParenthesesString_MinInsertions(string s, int expected)
+        {
+            var algo = new MinimumInsertionsToBalanceAParenthesesString();
+            var actual = algo.MinInsertions(s);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
