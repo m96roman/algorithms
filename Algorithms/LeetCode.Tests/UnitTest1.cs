@@ -311,5 +311,33 @@ namespace LeetCode.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData("leEeetcode", "leetcode")]
+        [InlineData("abBAcC", "")]
+        [InlineData("s", "s")]
+        [InlineData("aAAaAa", "")]
+        [InlineData("", "")]
+        public void MakeTheStringGreat_MakeGood(string s, string expected)
+        {
+            var algo = new MakeTheStringGreat();
+            var actual = algo.MakeGood(s);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData(1, 1, '0')]
+        [InlineData(2, 3, '1')]
+        [InlineData(3, 1, '0')]
+        [InlineData(4, 11, '1')]
+        [InlineData(3, 2, '1')]
+        public void FindKthBitInNthBinaryString_FindKthBit(int n, int k, char bit)
+        {
+            var algo = new FindKthBitInNthBinaryString();
+            var actual = algo.FindKthBit(n, k);
+
+            Assert.Equal(bit, actual);
+        }
     }
 }

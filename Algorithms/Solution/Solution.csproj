@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Codility\Codility.csproj" />
+    <ProjectReference Include="..\LeetCode\LeetCode.csproj" />
   </ItemGroup>
 
 </Project>
