@@ -35,7 +35,11 @@ namespace Codility.BinarySearchAlgorithm
                     }
                 }
 
-                return blocksCount > K ? BinarySearch.Action.MoveRight : BinarySearch.Action.MoveLeft;
+                return new BinarySearch.StepResult
+                {
+                    NextAction = blocksCount <= K ? BinarySearch.Action.MoveLeft : BinarySearch.Action.MoveRight,
+                    Success = blocksCount <= K
+                };
             });
         }
     }

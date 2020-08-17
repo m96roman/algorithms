@@ -1,5 +1,4 @@
-﻿using System;
-using Algorithms;
+﻿using Algorithms;
 
 namespace Codility.BinarySearchAlgorithm
 {
@@ -38,11 +37,15 @@ namespace Codility.BinarySearchAlgorithm
                     }
                 }
 
-                return allPlanksAreNailed
-                    ? BinarySearch.Action.MoveLeft
-                    : isLast
-                        ? BinarySearch.Action.NotFound
-                        : BinarySearch.Action.MoveRight;
+                return new BinarySearch.StepResult
+                {
+                    NextAction = allPlanksAreNailed
+                        ? BinarySearch.Action.MoveLeft
+                        : isLast
+                            ? BinarySearch.Action.Stop
+                            : BinarySearch.Action.MoveRight,
+                    Success = allPlanksAreNailed
+                };
             });
         }
     }

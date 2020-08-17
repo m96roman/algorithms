@@ -6,28 +6,35 @@ namespace Algorithms
     {
         public enum Action
         {
-            Found,
+            Stop,
             MoveRight,
-            MoveLeft,
-            NotFound
+            MoveLeft
         }
 
-        public static int Search(int start, int end, Func<int, bool, Action> predicate)
+        public class StepResult
         {
-            var mid = -1;
+            public Action NextAction { get; set; }
+            public bool Success { get; set; }
+        }
+        public static int Search(int start, int end, Func<int, bool, StepResult> predicate)
+        {
+            var lastSuccess = - 1;
 
             while (start <= end)
             {
-                mid = (start + end) / 2;
+                var mid = (start + end) / 2;
 
                 var result = predicate(mid, start == end);
 
-                switch (result)
+                if (result.Success)
                 {
-                    case Action.Found:
-                        return mid;
-                    case Action.NotFound:
-                        return -1;
+                    lastSuccess = mid;
+                }
+
+                switch (result.NextAction)
+                {
+                    case Action.Stop:
+                        return lastSuccess;
                     case Action.MoveLeft:
                         end = mid - 1;
                         break;
@@ -37,7 +44,7 @@ namespace Algorithms
                 }
             }
 
-            return mid;
+            return lastSuccess;
         }
     }
 }
