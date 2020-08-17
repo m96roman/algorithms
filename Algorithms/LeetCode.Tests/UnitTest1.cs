@@ -339,5 +339,16 @@ namespace LeetCode.Tests
 
             Assert.Equal(bit, actual);
         }
+
+        [Theory]
+        [InlineData(new[] { 1, 2, 3, 4, 7 }, 3, 3)]
+        [InlineData(new[] { 5, 4, 3, 2, 1, 1000000000 }, 2, 999999999)]
+        public void MagneticForceBetweenTwoBalls_MaxDistance(int[] position, int m, int expected)
+        {
+            var algo = new MagneticForceBetweenTwoBalls();
+            var actual = algo.MaxDistance(position, m);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
