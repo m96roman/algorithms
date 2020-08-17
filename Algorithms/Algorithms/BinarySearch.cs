@@ -16,6 +16,7 @@ namespace Algorithms
             public Action NextAction { get; set; }
             public bool Success { get; set; }
         }
+
         public static int Search(int start, int end, Func<int, bool, StepResult> predicate)
         {
             var lastSuccess = - 1;
