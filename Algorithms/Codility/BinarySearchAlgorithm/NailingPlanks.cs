@@ -12,7 +12,7 @@ namespace Codility.BinarySearchAlgorithm
             var start = 1;
             var end = planksCount;
 
-            return BinarySearch.Search(start, end, (mid, isLast) =>
+            return BinarySearch.Search(start, end, (mid, _) =>
             {
                 var prefixSum = new int[2 * nailsCount + 1];
 
@@ -39,11 +39,7 @@ namespace Codility.BinarySearchAlgorithm
 
                 return new BinarySearch.StepResult
                 {
-                    NextAction = allPlanksAreNailed
-                        ? BinarySearch.Action.MoveLeft
-                        : isLast
-                            ? BinarySearch.Action.Stop
-                            : BinarySearch.Action.MoveRight,
+                    NextAction = allPlanksAreNailed ? BinarySearch.Action.MoveLeft : BinarySearch.Action.MoveRight,
                     Success = allPlanksAreNailed
                 };
             });
