@@ -4,6 +4,7 @@ using Codility.EuclideanAlgorithm;
 using Codility.FibonacciNumbers;
 using Codility.GreedyAlgorithms;
 using Codility.MaximumSliceProblem;
+using Codility.PrimeAndCompositeNumbers;
 using Codility.SieveOfEratosthenes;
 using Xunit;
 
@@ -128,6 +129,17 @@ namespace Codility.Tests
         {
             var algo = new CountNonDivisible();
             var actual = algo.solution(A);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData(new[] { 1, 5, 3, 4, 3, 4, 1, 2, 3, 4, 6, 2 }, 3)]
+        [InlineData(new[] { 1, 3, 1, 1, 1, 3, 1, 1, 1, 3, 1, 1, 1, 3, 1 }, 4)]
+        public void Flags(int[] input, int expected)
+        {
+            var algo = new Flags();
+            var actual = algo.solution(input);
 
             Assert.Equal(expected, actual);
         }
