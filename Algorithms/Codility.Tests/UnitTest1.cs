@@ -143,5 +143,17 @@ namespace Codility.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(new[] { 1, 2, 3, 4, 3, 4, 1, 2, 3, 4, 6, 2 }, 3)]
+        [InlineData(new[] { 5 }, 0)]
+        [InlineData(new[] { 1, 3, 2, 1 }, 1)]
+        public void Peaks(int[] input, int expected)
+        {
+            var algo = new Peaks();
+            var actual = algo.solution(input);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
