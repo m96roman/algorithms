@@ -155,5 +155,15 @@ namespace Codility.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(26, new[] { 1, 4, 16 }, new[] { 26, 10, 20 }, new[] { 10, 4, 0 })]
+        public void CountSemiprimes(int N, int[] P, int[] Q, int[] expected)
+        {
+            var algo = new CountSemiprimes();
+            var actual = algo.solution(N, P, Q);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
