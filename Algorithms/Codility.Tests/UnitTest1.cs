@@ -165,5 +165,15 @@ namespace Codility.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(new[] { 15, 10, 3 }, new[] { 75, 30, 5 }, 1)]
+        public void CommonPrimeDivisors(int[] A, int[] B, int expected)
+        {
+            var algo = new CommonPrimeDivisors();
+            var actual = algo.solution(A, B);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
