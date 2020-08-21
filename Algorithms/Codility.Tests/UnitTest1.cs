@@ -4,6 +4,7 @@ using Codility.EuclideanAlgorithm;
 using Codility.FibonacciNumbers;
 using Codility.GreedyAlgorithms;
 using Codility.IndeedPrime2015Challenge;
+using Codility.IndeedPrime2016CollageChallenge;
 using Codility.MaximumSliceProblem;
 using Codility.PrimeAndCompositeNumbers;
 using Codility.SieveOfEratosthenes;
@@ -200,6 +201,17 @@ namespace Codility.Tests
 
             Assert.Equal(expected, actual);
             Assert.Equal(expected, actual2);
+        }
+
+        [Theory]
+        [InlineData(5, 3, 2)]
+        [InlineData(10, 3, 3)]
+        public void TennisTournament(int P, int C, int expected)
+        {
+            var algo = new TennisTournament();
+            var actual = algo.solution(P, C);
+
+            Assert.Equal(expected, actual);
         }
     }
 }
