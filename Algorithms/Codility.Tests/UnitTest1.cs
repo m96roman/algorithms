@@ -187,5 +187,19 @@ namespace Codility.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(new[] { 1, 3, 2, 1, 2, 1, 5, 3, 3, 4, 2 }, 2)]
+        [InlineData(new[] { 5, 8 }, 0)]
+        [InlineData(new[] { 9, 7, 2, 7, 9 }, 7)]
+        public void FloodDepth(int[] A, int expected)
+        {
+            var algo = new FloodDepth();
+            var actual = algo.solution(A);
+            var actual2 = algo.solution2(A);
+
+            Assert.Equal(expected, actual);
+            Assert.Equal(expected, actual2);
+        }
     }
 }
