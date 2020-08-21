@@ -4,6 +4,7 @@ using Codility.EuclideanAlgorithm;
 using Codility.FibonacciNumbers;
 using Codility.GreedyAlgorithms;
 using Codility.IndeedPrime2015Challenge;
+using Codility.IndeedPrime2016Challenge;
 using Codility.IndeedPrime2016CollageChallenge;
 using Codility.MaximumSliceProblem;
 using Codility.PrimeAndCompositeNumbers;
@@ -221,6 +222,17 @@ namespace Codility.Tests
         {
             var algo = new SocksLaundering();
             var actual = algo.solution(K, C, D);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData(new[] { 1, 2, 5, 1, 1, 2, 3, 5, 1 }, 5, 2)]
+        [InlineData(new[]{ 2, 3, 2, 3, 2, 3, 2, 3 }, 9, 1)]
+        public void RectangleBuilderGreaterArea(int[] A, int X, int expected)
+        {
+            var algo = new RectangleBuilderGreaterArea();
+            var actual = algo.solution(A, X);
 
             Assert.Equal(expected, actual);
         }
