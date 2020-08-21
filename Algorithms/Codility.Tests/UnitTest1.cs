@@ -3,6 +3,7 @@ using Codility.DynamicProgramming;
 using Codility.EuclideanAlgorithm;
 using Codility.FibonacciNumbers;
 using Codility.GreedyAlgorithms;
+using Codility.IndeedPrime2015Challenge;
 using Codility.MaximumSliceProblem;
 using Codility.PrimeAndCompositeNumbers;
 using Codility.SieveOfEratosthenes;
@@ -172,6 +173,17 @@ namespace Codility.Tests
         {
             var algo = new CommonPrimeDivisors();
             var actual = algo.solution(A, B);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData("test 5 a0A pass007 ?xy1", 7)]
+        [InlineData("test ?xy1", -1)]
+        public void LongestPassword(string S, int expected)
+        {
+            var algo = new LongestPassword();
+            var actual = algo.solution(S);
 
             Assert.Equal(expected, actual);
         }
