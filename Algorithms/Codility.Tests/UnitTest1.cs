@@ -213,5 +213,16 @@ namespace Codility.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(2, new[] { 1, 2, 1, 1 }, new[] { 1, 4, 3, 2, 4 }, 3)]
+        [InlineData(2, new[] { 1, 1, 1, 1 }, new[] { 5, 5 }, 3)]
+        public void SocksLaundering(int K, int[] C, int[] D, int expected)
+        {
+            var algo = new SocksLaundering();
+            var actual = algo.solution(K, C, D);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
