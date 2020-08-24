@@ -14,7 +14,7 @@ namespace Codility.BinarySearchAlgorithm
             var lowerBound = Math.Max(maxElement, sumOfElements / K);
             var upperBound = sumOfElements;
 
-            return BinarySearch.Search(lowerBound, upperBound, (mid, _) =>
+            return BinarySearch.SearchMin(lowerBound, upperBound, (mid) =>
             {
                 var blockLength = mid + 1;
                 var blocksCount = 0;
@@ -35,11 +35,7 @@ namespace Codility.BinarySearchAlgorithm
                     }
                 }
 
-                return new BinarySearch.StepResult
-                {
-                    NextAction = blocksCount <= K ? BinarySearch.Action.MoveLeft : BinarySearch.Action.MoveRight,
-                    Success = blocksCount <= K
-                };
+                return blocksCount <= K;
             });
         }
     }

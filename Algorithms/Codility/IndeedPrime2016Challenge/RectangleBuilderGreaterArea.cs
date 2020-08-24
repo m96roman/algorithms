@@ -47,16 +47,9 @@ namespace Codility.IndeedPrime2016Challenge
                 var lowerBound = i + 1;
                 var upperBound = orderedPieces.Length - 1;
 
-                var value = BinarySearch.Search(lowerBound, upperBound, (mid, _) =>
+                var value = BinarySearch.SearchMin(lowerBound, upperBound, (mid) =>
                 {
-                    var isValid = (long)orderedPieces[mid] * (long)orderedPieces[i] >= (long)X;
-
-                    return new BinarySearch.StepResult
-                    {
-                        NextAction = isValid ? BinarySearch.Action.MoveLeft : BinarySearch.Action.MoveRight,
-                        Success = isValid
-                    };
-
+                    return (long)orderedPieces[mid] * (long)orderedPieces[i] >= (long)X;
                 });
 
                 if (value != -1)

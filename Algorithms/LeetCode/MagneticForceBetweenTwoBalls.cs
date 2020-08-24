@@ -12,7 +12,7 @@ namespace LeetCode
             var lowerBound = 0;
             var upperBound = orderedPositions.Last();
 
-            return BinarySearch.Search(lowerBound, upperBound, (mid, _) =>
+            return BinarySearch.SearchMax(lowerBound, upperBound, (mid) =>
             {
                 var basketsUsed = 1;
                 var lastBasketPosition = orderedPositions.First();
@@ -26,13 +26,7 @@ namespace LeetCode
                     }
                 }
 
-                var isDistanceValid = basketsUsed >= m;
-
-                return new BinarySearch.StepResult
-                {
-                    NextAction = isDistanceValid ? BinarySearch.Action.MoveRight : BinarySearch.Action.MoveLeft,
-                    Success = isDistanceValid
-                };
+                return basketsUsed >= m;
             });
         }
     }

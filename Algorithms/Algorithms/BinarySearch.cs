@@ -47,5 +47,33 @@ namespace Algorithms
 
             return lastSuccess;
         }
+
+        public static int SearchMin(int start, int end, Predicate<int> predicate)
+        {
+            return Search(start, end, (mid, _) =>
+            {
+                var moveLeft = predicate(mid);
+
+                return new StepResult
+                {
+                    NextAction = moveLeft ? Action.MoveLeft : Action.MoveRight,
+                    Success = moveLeft
+                };
+            });
+        }
+
+        public static int SearchMax(int start, int end, Predicate<int> predicate)
+        {
+            return Search(start, end, (mid, _) =>
+            {
+                var moveRight = predicate(mid);
+
+                return new StepResult
+                {
+                    NextAction = moveRight ? Action.MoveRight : Action.MoveLeft,
+                    Success = moveRight
+                };
+            });
+        }
     }
 }

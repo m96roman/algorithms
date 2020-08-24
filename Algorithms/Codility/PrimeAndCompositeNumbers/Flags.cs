@@ -27,7 +27,7 @@ namespace Codility.PrimeAndCompositeNumbers
             var lowerBound = 0;
             var upperBound = (int)Math.Ceiling(Math.Sqrt(A.Length));
 
-            return BinarySearch.Search(lowerBound, upperBound, (mid, _) =>
+            return BinarySearch.SearchMax(lowerBound, upperBound, (mid) =>
             {
                 var lastPeakUsed = peaks.First();
                 var peaksUsed = 1;
@@ -41,13 +41,7 @@ namespace Codility.PrimeAndCompositeNumbers
                     }
                 }
 
-                var isValid = peaksUsed >= mid;
-
-                return new BinarySearch.StepResult
-                {
-                    NextAction = isValid ? BinarySearch.Action.MoveRight : BinarySearch.Action.MoveLeft,
-                    Success = isValid
-                };
+                return peaksUsed >= mid;
             });
         }
     }
