@@ -23,7 +23,7 @@ namespace Algorithms
 
             while (start <= end)
             {
-                var mid = (start + end) / 2;
+                var mid = start + (end - start) / 2;
 
                 var result = predicate(mid, start == end);
 
