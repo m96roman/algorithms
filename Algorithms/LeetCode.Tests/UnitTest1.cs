@@ -350,5 +350,18 @@ namespace LeetCode.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(new[] { 7, 4 }, new[] { 5, 2, 8, 9 }, 1)]
+        [InlineData(new[] { 1, 1 }, new[] { 1, 1, 1 }, 9)]
+        [InlineData(new[] { 7, 7, 8, 3 }, new[] { 1, 2, 9, 7 }, 2)]
+        [InlineData(new[] { 4, 7, 9, 11, 23 }, new[] { 3, 5, 1024, 12, 18 }, 0)]
+        public void NumberOfWaysWhereSquareOfNumberIsEqualtoProductOfTwoNumbers_NumTriplets(int[] nums1, int[] nums2, int expected)
+        {
+            var algo = new NumberOfWaysWhereSquareOfNumberIsEqualtoProductOfTwoNumbers();
+            var actual = algo.NumTriplets(nums1, nums2);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
