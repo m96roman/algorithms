@@ -363,5 +363,17 @@ namespace LeetCode.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData("abaac", new[]{ 1, 2, 3, 4, 5 }, 3)]
+        [InlineData("abc", new[]{ 1, 2, 3 }, 0)]
+        [InlineData("aabaa", new[]{ 1, 2, 3, 4, 1 }, 2)]
+        public void MinimumDeletionCostToAvoidRepeatingLetters_MinCost(string s, int[] cost, int expected)
+        {
+            var algo = new MinimumDeletionCostToAvoidRepeatingLetters();
+            var actual = algo.MinCost(s, cost);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
