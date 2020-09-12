@@ -365,15 +365,42 @@ namespace LeetCode.Tests
         }
 
         [Theory]
-        [InlineData("abaac", new[]{ 1, 2, 3, 4, 5 }, 3)]
-        [InlineData("abc", new[]{ 1, 2, 3 }, 0)]
-        [InlineData("aabaa", new[]{ 1, 2, 3, 4, 1 }, 2)]
+        [InlineData("abaac", new[] { 1, 2, 3, 4, 5 }, 3)]
+        [InlineData("abc", new[] { 1, 2, 3 }, 0)]
+        [InlineData("aabaa", new[] { 1, 2, 3, 4, 1 }, 2)]
         public void MinimumDeletionCostToAvoidRepeatingLetters_MinCost(string s, int[] cost, int expected)
         {
             var algo = new MinimumDeletionCostToAvoidRepeatingLetters();
             var actual = algo.MinCost(s, cost);
 
             Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [MemberData(nameof(Permutations_Permute_Data))]
+        public void Permutations_Permute(int[] nums, IList<IList<int>> expected)
+        {
+            var algo = new Permutations();
+            var result = algo.Permute(nums);
+
+            Assert.Equal(expected, result);
+        }
+
+        public static IEnumerable<object[]> Permutations_Permute_Data()
+        {
+            yield return new object[]
+            {
+                new[] {1, 2, 3},
+                new[]
+                {
+                    new[] {1, 2, 3},
+                    new[] {1, 3, 2},
+                    new[] {2, 1, 3},
+                    new[] {2, 3, 1},
+                    new[] {3, 2, 1},
+                    new[] {3, 1, 2}
+                }
+            };
         }
     }
 }
