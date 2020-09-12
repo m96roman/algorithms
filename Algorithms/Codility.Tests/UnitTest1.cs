@@ -1,4 +1,5 @@
 ﻿using Codility.BinarySearchAlgorithm;
+using Codility.CaterpillarMethod;
 using Codility.DynamicProgramming;
 using Codility.EuclideanAlgorithm;
 using Codility.FibonacciNumbers;
@@ -228,11 +229,22 @@ namespace Codility.Tests
 
         [Theory]
         [InlineData(new[] { 1, 2, 5, 1, 1, 2, 3, 5, 1 }, 5, 2)]
-        [InlineData(new[]{ 2, 3, 2, 3, 2, 3, 2, 3 }, 9, 1)]
+        [InlineData(new[] { 2, 3, 2, 3, 2, 3, 2, 3 }, 9, 1)]
         public void RectangleBuilderGreaterArea(int[] A, int X, int expected)
         {
             var algo = new RectangleBuilderGreaterArea();
             var actual = algo.solution(A, X);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData(new[] { -5, -3, -1, 0, 3, 6 }, 5)]
+        [InlineData(new[] { -5, -5, -1, 0, 1, 1, 1, 1, 4, 5, 6, 6, 6 }, 5)]
+        public void AbsDistinct(int[] A, int expected)
+        {
+            var algo = new AbsDistinct();
+            var actual = algo.solution(A);
 
             Assert.Equal(expected, actual);
         }
