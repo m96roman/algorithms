@@ -402,5 +402,17 @@ namespace LeetCode.Tests
                 }
             };
         }
+
+        [Theory]
+        [InlineData(new[] { 1, 4, 2, 5, 3 }, 58)]
+        [InlineData(new[] { 1, 2 }, 3)]
+        [InlineData(new[] { 10, 11, 12 }, 66)]
+        public void SumOfAllOddLengthSubArrays_SumOddLengthSubArrays(int[] arr, int expected)
+        {
+            var algo = new SumOfAllOddLengthSubArrays();
+            var actual = algo.SumOddLengthSubArrays(arr);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
