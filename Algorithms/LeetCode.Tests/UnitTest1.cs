@@ -414,5 +414,63 @@ namespace LeetCode.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [MemberData(nameof(MaximumSumObtainedOfAnyPermutation_MaxSumRangeQuery_Data))]
+        public void MaximumSumObtainedOfAnyPermutation_MaxSumRangeQuery(int[] nums, int[][] requests, int expected)
+        {
+            var algo = new MaximumSumObtainedOfAnyPermutation();
+            var actual = algo.MaxSumRangeQuery(nums, requests);
+
+            Assert.Equal(expected, actual);
+        }
+
+        public static IEnumerable<object[]> MaximumSumObtainedOfAnyPermutation_MaxSumRangeQuery_Data()
+        {
+            yield return new object[]
+            {
+                new []{ 1, 2, 3, 4, 5 },
+                new []
+                {
+                    new []{1,3},
+                    new []{0,1}
+                },
+                19
+            };
+
+            yield return new object[]
+            {
+                new []{ 1, 2, 3, 4, 5 },
+                new []
+                {
+                    new []{1,3},
+                    new []{0,1}
+                },
+                19
+            };
+
+            yield return new object[]
+            {
+                new []{ 1, 2, 3, 4, 5, 6 },
+                new []
+                {
+                    new []{0, 1}
+                },
+                11
+            };
+
+            yield return new object[]
+            {
+                new []{ 1, 2, 3, 4, 5, 10},
+                new []
+                {
+                    new []{0, 2},
+                    new []{1, 3},
+                    new []{1, 1}
+                },
+                47
+            };
+
+        }
     }
 }
