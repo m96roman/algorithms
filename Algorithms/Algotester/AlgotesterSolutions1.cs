@@ -363,5 +363,29 @@ namespace Algotester
                 }
             }
         }
+
+        public static class LongestIncreasingSubSequence
+        {
+            public static void Run(TextReader reader, TextWriter writer)
+            {
+                var length = int.Parse(reader.ReadLine());
+                var sequence = reader.ReadLine().Split(' ').Select(int.Parse).ToArray();
+
+                var dp = Enumerable.Repeat(1, length).ToArray();
+
+                for (var i = length - 1; i >= 0; --i)
+                {
+                    for (var j = i - 1; j >= 0; --j)
+                    {
+                        if (sequence[i] > sequence[j])
+                        {
+                            dp[j] = Math.Max(dp[j], dp[i] + 1);
+                        }
+                    }
+                }
+
+                writer.WriteLine(dp.Max());
+            }
+        }
     }
 }
