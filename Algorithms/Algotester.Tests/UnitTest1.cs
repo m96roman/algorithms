@@ -139,5 +139,14 @@ namespace Algotester.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData("5\r\n4 7 2 10 3", "3\r\n")]
+        public void LongestIncreasingSubSequence(string input, string expected)
+        {
+            var actual = ExecuteWithInput(AlgotesterSolutions1.LongestIncreasingSubSequence.Run, input);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
