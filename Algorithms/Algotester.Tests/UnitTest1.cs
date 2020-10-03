@@ -31,9 +31,9 @@ namespace Algotester.Tests
 
         [Theory]
         [InlineData("2\r\n10 50 100\r\n70 10 50", "150\r\n")]
-        public void BorsñhPotatoSalad(string input, string expected)
+        public void BorschPotatoSalad(string input, string expected)
         {
-            var actual = ExecuteWithInput(AlgotesterSolutions1.BorsñhPotatoSalad.Run, input);
+            var actual = ExecuteWithInput(AlgotesterSolutions1.BorschPotatoSalad.Run, input);
 
             Assert.Equal(expected, actual);
         }

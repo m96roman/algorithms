@@ -9,7 +9,7 @@ namespace Algotester
 {
     public static class AlgotesterSolutions1
     {
-        public static class BorsсhPotatoSalad
+        public static class BorschPotatoSalad
         {
             public static void Run(TextReader reader, TextWriter writer)
             {
