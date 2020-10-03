@@ -148,5 +148,14 @@ namespace Algotester.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData("3 2", "31\r\n")]
+        public void NewYearMath(string input, string expected)
+        {
+            var actual = ExecuteWithInput(AlgotesterSolutions1.NewYearMath.Run, input);
+
+            Assert.Equal(actual, expected);
+        }
     }
 }

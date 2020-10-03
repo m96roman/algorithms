@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -385,6 +386,60 @@ namespace Algotester
                 }
 
                 writer.WriteLine(dp.Max());
+            }
+        }
+
+        public static class NewYearMath
+        {
+            public static void Run(TextReader reader, TextWriter writer)
+            {
+                var input = reader.ReadLine()
+                    .Split(' ')
+                    .Select(int.Parse)
+                    .ToArray();
+
+                var N = input[0];
+                var K = input[1];
+
+                var maxNum = 10000000;
+                var sieve = new bool[maxNum];
+                sieve[0] = true;
+                sieve[1] = true;
+
+                for (var i = 2; i * i < maxNum; ++i)
+                {
+                    if (sieve[i])
+                    {
+                        continue;
+                    }
+                    
+                    for (var k = i * i; k < maxNum; k += i)
+                    {
+                        sieve[k] = true;
+                    }
+                }
+
+                var primes = sieve
+                    .Select((el, i) => new {value = i, isPrime = !el})
+                    .Where(it => it.isPrime)
+                    .Select(it => it.value)
+                    .ToArray();
+
+                var list = primes.ToList();
+
+                for (var i = 1; i <= K; ++i)
+                {
+                    var currentList = new List<int>();
+                    for(var j = 0; j < primes.Length && primes[j] < list.Count; ++j)
+                    {
+                        currentList.Add(list[primes[j] - 1]);
+                    }
+
+                    list = currentList;
+                }
+
+                var result = list[N - 1];
+                writer.WriteLine(result);
             }
         }
     }
