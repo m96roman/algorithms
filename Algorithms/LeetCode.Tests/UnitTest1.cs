@@ -176,24 +176,6 @@ namespace LeetCode.Tests
 
         public static IEnumerable<object[]> NumberOfGoodLeafNodesPairs_CountPairs_Data()
         {
-            TreeNode ReadBinary(params int?[] tree)
-            {
-                TreeNode ReadNodes(int index)
-                {
-                    if (index >= tree.Length || tree[index] == null)
-                    {
-                        return null;
-                    }
-
-                    var leftChild = ReadNodes(2 * index + 1);
-                    var rightChild = ReadNodes(2 * index + 2);
-
-                    return new TreeNode(tree[index].Value, leftChild, rightChild);
-                }
-
-                return ReadNodes(0);
-            }
-
             yield return new object[]
             {
                 ReadBinary(1,2,3,null,4),
@@ -484,6 +466,61 @@ namespace LeetCode.Tests
             var actual = algo.SpecialArray(nums);
 
             Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [MemberData(nameof(EvenOddTree_IsEvenOddTree_Data))]
+        public void EvenOddTree_IsEvenOddTree(TreeNode root, bool expected)
+        {
+            var algo = new EvenOddTree();
+            var actual = algo.IsEvenOddTree(root);
+
+            Assert.Equal(expected, actual);
+        }
+
+        public static IEnumerable<object[]> EvenOddTree_IsEvenOddTree_Data()
+        {
+            yield return new object[]
+            {
+                ReadBinary(1,10,4,3,null,7,9,12,8,6,null,null,2),
+                true
+            };
+
+            yield return new object[]
+            {
+                ReadBinary(5,4,2,3,3,7),
+                false
+            };
+
+            yield return new object[]
+            {
+                ReadBinary(1),
+                true
+            };
+
+            yield return new object[]
+            {
+                ReadBinary(11,8,6,1,3,9,11,30,20,18,16,12,10,4,2,17),
+                true
+            };
+        }
+
+        private static TreeNode ReadBinary(params int?[] tree)
+        {
+            TreeNode ReadNodes(int index)
+            {
+                if (index >= tree.Length || tree[index] == null)
+                {
+                    return null;
+                }
+
+                var leftChild = ReadNodes(2 * index + 1);
+                var rightChild = ReadNodes(2 * index + 2);
+
+                return new TreeNode(tree[index].Value, leftChild, rightChild);
+            }
+
+            return ReadNodes(0);
         }
     }
 }
