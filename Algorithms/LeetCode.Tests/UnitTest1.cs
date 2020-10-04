@@ -472,5 +472,18 @@ namespace LeetCode.Tests
             };
 
         }
+
+        [Theory]
+        [InlineData(new[] { 3, 5 }, 2)]
+        [InlineData(new[] { 0, 0 }, -1)]
+        [InlineData(new[] { 0, 4, 3, 0, 4 }, 3)]
+        [InlineData(new[] { 3, 6, 7, 7, 0 }, -1)]
+        public void SpecialArrayWithXElementsGreaterThanOrEqualX_SpecialArray(int[] nums, int expected)
+        {
+            var algo = new SpecialArrayWithXElementsGreaterThanOrEqualX();
+            var actual = algo.SpecialArray(nums);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
