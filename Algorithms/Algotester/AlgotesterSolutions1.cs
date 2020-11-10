@@ -4,14 +4,15 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Algorithms;
+using Algotester.Domain;
 
 namespace Algotester
 {
     public static class AlgotesterSolutions1
     {
-        public static class BorschPotatoSalad
+        public class BorschPotatoSalad : IProblemSolver
         {
-            public static void Run(TextReader reader, TextWriter writer)
+            public void Solve(TextReader reader, TextWriter writer)
             {
                 var friendsCount = int.Parse(reader.ReadLine());
                 int A = 0, B = 0, C = 0;
@@ -47,9 +48,9 @@ namespace Algotester
             }
         }
 
-        public static class DeputyMoney
+        public class DeputyMoney : IProblemSolver
         {
-            public static void Run(TextReader reader, TextWriter writer)
+            public void Solve(TextReader reader, TextWriter writer)
             {
                 var input = reader.ReadLine();
                 var money = int.Parse(input.Trim());
@@ -70,9 +71,9 @@ namespace Algotester
             }
         }
 
-        public static class ElephantsCoach
+        public class ElephantsCoach : IProblemSolver
         {
-            public static void Run(TextReader reader, TextWriter writer)
+            public void Solve(TextReader reader, TextWriter writer)
             {
                 reader.ReadLine();
 
@@ -94,9 +95,9 @@ namespace Algotester
             }
         }
 
-        public static class InterestingGame
+        public class InterestingGame : IProblemSolver
         {
-            public static void Run(TextReader reader, TextWriter writer)
+            public void Solve(TextReader reader, TextWriter writer)
             {
                 var str = Regex.Replace(reader.ReadLine().Trim(), "[ ]{2,}", " ");
                 var dimension = str.Split(' ').Select(int.Parse).ToArray();
@@ -116,9 +117,9 @@ namespace Algotester
             }
         }
 
-        public static class MaryAndCookies
+        public class MaryAndCookies : IProblemSolver
         {
-            public static void Run(TextReader reader, TextWriter writer)
+            public void Solve(TextReader reader, TextWriter writer)
             {
                 reader.ReadLine();
                 var str = Regex.Replace(reader.ReadLine(), "[ ]{2,}", " ");
@@ -131,9 +132,9 @@ namespace Algotester
             }
         }
 
-        public static class Oranges
+        public class Oranges : IProblemSolver
         {
-            public static void Run(TextReader reader, TextWriter writer)
+            public void Solve(TextReader reader, TextWriter writer)
             {
                 var str = Regex.Replace(reader.ReadLine().Trim(), "[ ]{2,}", " ");
                 var counts = str.Split(' ').Select(long.Parse).ToArray();
@@ -144,9 +145,9 @@ namespace Algotester
             }
         }
 
-        public static class PetrosCake
+        public class PetrosCake : IProblemSolver
         {
-            public static void Run(TextReader reader, TextWriter writer)
+            public void Solve(TextReader reader, TextWriter writer)
             {
                 var input = reader.ReadLine()
                     .Trim()
@@ -162,9 +163,9 @@ namespace Algotester
             }
         }
 
-        public static class Teeth
+        public class Teeth : IProblemSolver
         {
-            public static void Run(TextReader reader, TextWriter writer)
+            public void Solve(TextReader reader, TextWriter writer)
             {
                 var input = reader.ReadLine()
                     .Trim()
@@ -203,9 +204,9 @@ namespace Algotester
             }
         }
 
-        public static class Helloween
+        public class Helloween : IProblemSolver
         {
-            public static void Run(TextReader reader, TextWriter writer)
+            public void Solve(TextReader reader, TextWriter writer)
             {
                 reader.ReadLine();
 
@@ -230,9 +231,9 @@ namespace Algotester
             }
         }
 
-        public static class Robot
+        public class Robot : IProblemSolver
         {
-            public static void Run(TextReader reader, TextWriter writer)
+            public void Solve(TextReader reader, TextWriter writer)
             {
                 var commands = reader.ReadLine();
 
@@ -253,9 +254,9 @@ namespace Algotester
             }
         }
 
-        public static class VerkhovnaRada
+        public class VerkhovnaRada : IProblemSolver
         {
-            public static void Run(TextReader reader, TextWriter writer)
+            public void Solve(TextReader reader, TextWriter writer)
             {
                 reader.ReadLine();
                 var groupCount = Regex.Replace(reader.ReadLine().Trim(), "[ ]{2,}", " ")
@@ -270,9 +271,9 @@ namespace Algotester
             }
         }
 
-        public static class KoliaVasiaTennis
+        public class KoliaVasiaTennis : IProblemSolver
         {
-            public static void Run(TextReader reader, TextWriter writer)
+            public void Solve(TextReader reader, TextWriter writer)
             {
                 reader.ReadLine();
                 var gameStatuses = reader.ReadLine().Trim();
@@ -319,9 +320,9 @@ namespace Algotester
             }
         }
 
-        public static class PotatoInBasement
+        public class PotatoInBasement : IProblemSolver
         {
-            public static void Run(TextReader reader, TextWriter writer)
+            public void Solve(TextReader reader, TextWriter writer)
             {
                 var dimension = reader.ReadLine().Trim().Split(' ').Select(int.Parse).ToArray();
 
@@ -365,9 +366,9 @@ namespace Algotester
             }
         }
 
-        public static class LongestIncreasingSubSequence
+        public class LongestIncreasingSubSequence : IProblemSolver
         {
-            public static void Run(TextReader reader, TextWriter writer)
+            public void Solve(TextReader reader, TextWriter writer)
             {
                 var length = int.Parse(reader.ReadLine());
                 var sequence = reader.ReadLine().Split(' ').Select(int.Parse).ToArray();
@@ -389,9 +390,9 @@ namespace Algotester
             }
         }
 
-        public static class NewYearMath
+        public class NewYearMath : IProblemSolver
         {
-            public static void Run(TextReader reader, TextWriter writer)
+            public void Solve(TextReader reader, TextWriter writer)
             {
                 var input = reader.ReadLine()
                     .Split(' ')
@@ -443,9 +444,9 @@ namespace Algotester
             }
         }
 
-        public static class HugeTeaParty
+        public class HugeTeaParty : IProblemSolver
         {
-            public static void Run(TextReader reader, TextWriter writer)
+            public void Solve(TextReader reader, TextWriter writer)
             {
                 var input = ReadIntArray(reader);
 
