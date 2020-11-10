@@ -482,10 +482,9 @@ namespace Algotester
 
                 var visitedFriends = new bool[friendsCount];
 
-                var extraTea = visitedFriends
-                    .Select((it, i) => new {isVisited = it, idx = i})
-                    .Where(it => !it.isVisited)
-                    .Sum(it => Math.Max(DFS(it.idx, friendsConnection, visitedFriends, friendsTea), 0));
+                var extraTea = Enumerable
+                    .Range(0, friendsCount)
+                    .Sum(it => Math.Max(DFS(it, friendsConnection, visitedFriends, friendsTea), 0));
 
                 writer.WriteLine(extraTea);
             }
@@ -512,6 +511,89 @@ namespace Algotester
                     .Select(int.Parse)
                     .ToArray();
             }  
+        }
+
+        public class Terrorist : IProblemSolver
+        {
+            private class TerroristNode
+            {
+                public bool Visited { get; set; }
+
+                public List<TerroristNode> Connections { get; } = new List<TerroristNode>();
+            }
+
+            public void Solve(TextReader reader, TextWriter writer)
+            {
+                var terroristCount = ReadIntArray(reader)[0];
+                var terroristNodes = new TerroristNode[terroristCount];
+
+                while (true)
+                {
+                    var connection = ReadIntArray(reader);
+
+                    if (connection[0] == 0 && connection[1] == 0)
+                    {
+                        break;
+                    }
+
+                    var terroristA = connection[0] - 1;
+                    var terroristB = connection[1] - 1;
+
+                    var terroristANode = terroristNodes[terroristA] 
+                        = terroristNodes[terroristA] ?? new TerroristNode();
+                    var terroristBNode = terroristNodes[terroristB] 
+                        = terroristNodes[terroristB] ?? new TerroristNode();
+
+                    terroristANode.Connections.Add(terroristBNode);
+                    terroristBNode.Connections.Add(terroristANode);
+                }
+
+                var countOfGroups = 0;
+
+                foreach (var terroristNode in terroristNodes)
+                {
+                    if (terroristNode == null)
+                    {
+                        ++countOfGroups;
+                        continue;
+                    }
+
+                    if (terroristNode.Visited)
+                    {
+                        continue;
+                    }
+
+                    ++countOfGroups;
+                    DFS(terroristNode);
+                }
+
+                var missingConnections = countOfGroups - 1;
+
+                writer.WriteLine(missingConnections);
+            }
+
+            private static void DFS(TerroristNode terrorist)
+            {
+                if (terrorist.Visited)
+                {
+                    return;
+                }
+
+                terrorist.Visited = true;
+
+                foreach (var connection in terrorist.Connections)
+                {
+                    DFS(connection);
+                }
+            }
+
+            private static int[] ReadIntArray(TextReader reader)
+            {
+                return reader.ReadLine()
+                    .Split(' ')
+                    .Select(int.Parse)
+                    .ToArray();
+            }
         }
     }
 }
