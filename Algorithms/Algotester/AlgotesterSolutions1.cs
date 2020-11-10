@@ -442,5 +442,75 @@ namespace Algotester
                 writer.WriteLine(result);
             }
         }
+
+        public static class HugeTeaParty
+        {
+            public static void Run(TextReader reader, TextWriter writer)
+            {
+                var input = ReadIntArray(reader);
+
+                var friendsCount = input[0];
+                var connectionsCount = input[1];
+
+                var friendsTea = new int[friendsCount];
+
+                for(var i = 0; i < friendsCount; ++i)
+                {
+                    var friendTeaData = ReadIntArray(reader);
+
+                    friendsTea[i] = friendTeaData[0] - friendTeaData[1];
+                }
+
+                var friendsConnection = new bool[friendsCount][];
+
+                for(var i = 0; i < friendsConnection.Length; ++i)
+                {
+                    friendsConnection[i] = new bool[friendsCount];
+                }
+
+                for(var i = 0; i < connectionsCount; ++i)
+                {
+                    var connection = ReadIntArray(reader);
+
+                    var friendA = connection[0] - 1;
+                    var friendB = connection[1] - 1;
+
+                    friendsConnection[friendA][friendB] = true;
+                    friendsConnection[friendB][friendA] = true;
+                }
+
+                var visitedFriends = new bool[friendsCount];
+
+                var extraTea = visitedFriends
+                    .Select((it, i) => new {isVisited = it, idx = i})
+                    .Where(it => !it.isVisited)
+                    .Sum(it => Math.Max(DFS(it.idx, friendsConnection, visitedFriends, friendsTea), 0));
+
+                writer.WriteLine(extraTea);
+            }
+
+            private static int DFS(int index, bool[][] connections, bool[] visited, int[] values)
+            {
+                if (visited[index])
+                {
+                    return 0;
+                }
+
+                visited[index] = true;
+
+                return values[index] + connections[index]
+                    .Select((it, i) => new {isConnected = it, idx = i})
+                    .Where(it => it.isConnected)
+                    .Sum(it => DFS(it.idx, connections, visited, values));
+            }
+
+            private static int[] ReadIntArray(TextReader reader)
+            {
+                return reader.ReadLine()
+                    .Split(' ')
+                    .Select(int.Parse)
+                    .ToArray();
+            }  
+        }
     }
 }

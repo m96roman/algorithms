@@ -154,5 +154,14 @@ namespace Algotester.Tests
 
             Assert.Equal(actual, expected);
         }
+
+        [Theory]
+        [InlineData("3 1|nl10 3|nl2 10|nl7 6|nl1 2", "1|nl")]
+        public void HugeTeaParty(string input, string expected)
+        {
+            var actual = ExecuteWithInput(AlgotesterSolutions1.HugeTeaParty.Run, input);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
