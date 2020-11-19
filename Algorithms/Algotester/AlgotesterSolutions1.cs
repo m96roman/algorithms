@@ -413,7 +413,7 @@ namespace Algotester
                     {
                         continue;
                     }
-                    
+
                     for (var k = i * i; k < maxNum; k += i)
                     {
                         sieve[k] = true;
@@ -421,7 +421,7 @@ namespace Algotester
                 }
 
                 var primes = sieve
-                    .Select((el, i) => new {value = i, isPrime = !el})
+                    .Select((el, i) => new { value = i, isPrime = !el })
                     .Where(it => it.isPrime)
                     .Select(it => it.value)
                     .ToArray();
@@ -431,7 +431,7 @@ namespace Algotester
                 for (var i = 1; i <= K; ++i)
                 {
                     var currentList = new List<int>();
-                    for(var j = 0; j < primes.Length && primes[j] < list.Count; ++j)
+                    for (var j = 0; j < primes.Length && primes[j] < list.Count; ++j)
                     {
                         currentList.Add(list[primes[j] - 1]);
                     }
@@ -455,7 +455,7 @@ namespace Algotester
 
                 var friendsTea = new int[friendsCount];
 
-                for(var i = 0; i < friendsCount; ++i)
+                for (var i = 0; i < friendsCount; ++i)
                 {
                     var friendTeaData = ReadIntArray(reader);
 
@@ -464,12 +464,12 @@ namespace Algotester
 
                 var friendsConnection = new bool[friendsCount][];
 
-                for(var i = 0; i < friendsConnection.Length; ++i)
+                for (var i = 0; i < friendsConnection.Length; ++i)
                 {
                     friendsConnection[i] = new bool[friendsCount];
                 }
 
-                for(var i = 0; i < connectionsCount; ++i)
+                for (var i = 0; i < connectionsCount; ++i)
                 {
                     var connection = ReadIntArray(reader);
 
@@ -499,7 +499,7 @@ namespace Algotester
                 visited[index] = true;
 
                 return values[index] + connections[index]
-                    .Select((it, i) => new {isConnected = it, idx = i})
+                    .Select((it, i) => new { isConnected = it, idx = i })
                     .Where(it => it.isConnected)
                     .Sum(it => DFS(it.idx, connections, visited, values));
             }
@@ -510,7 +510,7 @@ namespace Algotester
                     .Split(' ')
                     .Select(int.Parse)
                     .ToArray();
-            }  
+            }
         }
 
         public class Terrorist : IProblemSolver
@@ -539,9 +539,9 @@ namespace Algotester
                     var terroristA = connection[0] - 1;
                     var terroristB = connection[1] - 1;
 
-                    var terroristANode = terroristNodes[terroristA] 
+                    var terroristANode = terroristNodes[terroristA]
                         = terroristNodes[terroristA] ?? new TerroristNode();
-                    var terroristBNode = terroristNodes[terroristB] 
+                    var terroristBNode = terroristNodes[terroristB]
                         = terroristNodes[terroristB] ?? new TerroristNode();
 
                     terroristANode.Connections.Add(terroristBNode);
@@ -584,6 +584,99 @@ namespace Algotester
                 foreach (var connection in terrorist.Connections)
                 {
                     DFS(connection);
+                }
+            }
+
+            private static int[] ReadIntArray(TextReader reader)
+            {
+                return reader.ReadLine()
+                    .Split(' ')
+                    .Select(int.Parse)
+                    .ToArray();
+            }
+        }
+
+        public class Civilization : IProblemSolver
+        {
+            public void Solve(TextReader reader, TextWriter writer)
+            {
+                var input = ReadIntArray(reader);
+
+                var N = input[0];
+                var M = input[1];
+                var K = input[2];
+
+                var dist = new int[N][];
+
+                for (var i = 0; i < N; ++i)
+                {
+                    dist[i] = Enumerable.Repeat(-1, M).ToArray();
+                }
+
+                var queue = new Queue<(int, int)>();
+
+                for (var i = 0; i < N; ++i)
+                {
+                    var line = ReadIntArray(reader);
+
+                    for (var j = 0; j < M; ++j)
+                    {
+                        if (line[j] == 1)
+                        {
+                            dist[i][j] = 0;
+                            queue.Enqueue((i, j));
+                        }
+                    }
+                }
+
+                if (!queue.Any())
+                {
+                    writer.WriteLine(0);
+                    return;
+                }
+
+                while (queue.Any())
+                {
+                    var (x, y) = queue.Dequeue();
+                    var adjacentCells = GetAdjacentCells(N - 1, M - 1, x, y);
+
+                    foreach (var (cx, cy) in adjacentCells)
+                    {
+                        if (dist[cx][cy] == -1)
+                        {
+                            dist[cx][cy] = dist[x][y] + 1;
+                            queue.Enqueue((cx, cy));
+                        }
+                    }
+                }
+
+                var countOfInhabitedCells = dist
+                    .SelectMany(it => it)
+                    .Count(it => it <= K);
+
+                writer.WriteLine(countOfInhabitedCells);
+            }
+
+            private static IEnumerable<(int, int)> GetAdjacentCells(int maxX, int maxY, int x, int y)
+            {
+                if (x > 0)
+                {
+                    yield return (x - 1, y);
+                }
+
+                if (y > 0)
+                {
+                    yield return (x, y - 1);
+                }
+
+                if (x < maxX)
+                {
+                    yield return (x + 1, y);
+                }
+
+                if (y < maxY)
+                {
+                    yield return (x, y + 1);
                 }
             }
 

@@ -116,5 +116,10 @@ namespace Algotester.Tests
         [InlineData("5|nl1 2|nl3 4|nl0 0", "2|nl")]
         public void Terrorist(string input, string expected) =>
             RunTestFor<Terrorist>(input, expected);
+        
+        [Theory]
+        [InlineData("3 4 1|nl0 1 0 0|nl1 0 0 0|nl0 0 0 1", "9|nl")]
+        public void Civilization(string input, string expected) =>
+            RunTestFor<Civilization>(input, expected);
     }
 }
