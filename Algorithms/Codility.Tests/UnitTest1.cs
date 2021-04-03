@@ -323,5 +323,16 @@ namespace Codility.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(new[] { 4, 1, 3, 2 }, 1)]
+        [InlineData(new[] { 4, 1, 3 }, 0)]
+        public void PermCheck(int[] A, int expected)
+        {
+            var algo = new PermCheck();
+            var actual = algo.solution(A);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
