@@ -1,4 +1,5 @@
-﻿using Codility.BinarySearchAlgorithm;
+﻿using Codility.Arrays;
+using Codility.BinarySearchAlgorithm;
 using Codility.CaterpillarMethod;
 using Codility.DynamicProgramming;
 using Codility.EuclideanAlgorithm;
@@ -261,6 +262,19 @@ namespace Codility.Tests
         {
             var algo = new BinaryGap();
             var actual = algo.solution(n);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData(new[] { 3, 8, 9, 7, 6 }, 3, new[] { 9, 7, 6, 3, 8 })]
+        [InlineData(new[] { 0, 0, 0 }, 1, new[] { 0, 0, 0 })]
+        [InlineData(new[] { 1, 2, 3, 4 }, 4, new[] { 1, 2, 3, 4 })]
+        [InlineData(new int[0], 4, new int[0])]
+        public void CyclicRotation(int[] A, int K, int[] expected)
+        {
+            var algo = new CyclicRotation();
+            var actual = algo.solution(A, K);
 
             Assert.Equal(expected, actual);
         }
