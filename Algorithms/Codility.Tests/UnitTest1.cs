@@ -278,5 +278,15 @@ namespace Codility.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(new[] { 9, 3, 9, 3, 9, 7, 9 }, 7)]
+        public void OddOccurrencesInArray(int[] A, int expected)
+        {
+            var algo = new OddOccurrencesInArray();
+            var actual = algo.solution(A);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
