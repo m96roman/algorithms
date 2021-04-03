@@ -7,6 +7,7 @@ using Codility.GreedyAlgorithms;
 using Codility.IndeedPrime2015Challenge;
 using Codility.IndeedPrime2016Challenge;
 using Codility.IndeedPrime2016CollageChallenge;
+using Codility.Iterations;
 using Codility.MaximumSliceProblem;
 using Codility.PrimeAndCompositeNumbers;
 using Codility.SieveOfEratosthenes;
@@ -245,6 +246,21 @@ namespace Codility.Tests
         {
             var algo = new AbsDistinct();
             var actual = algo.solution(A);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData(9, 2)]
+        [InlineData(529, 4)]
+        [InlineData(20, 1)]
+        [InlineData(15, 0)]
+        [InlineData(32, 0)]
+        [InlineData(1041, 5)]
+        public void BinaryGap(int n, int expected)
+        {
+            var algo = new BinaryGap();
+            var actual = algo.solution(n);
 
             Assert.Equal(expected, actual);
         }

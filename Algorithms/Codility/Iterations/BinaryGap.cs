@@ -1,4 +1,6 @@
-﻿namespace Codility.Iterations
+﻿using System;
+
+namespace Codility.Iterations
 {
     public class BinaryGap
     {
@@ -17,15 +19,11 @@
                 }
                 else if (binaryDigit == 1)
                 {
-                    if (zeroCount > maxZeroCount)
-                    {
-                        maxZeroCount = zeroCount;
-                    }
-
+                    maxZeroCount = Math.Max(maxZeroCount, zeroCount);
                     zeroCount = 0;
                 }
 
-                N = N / 2;
+                N /= 2;
             }
 
             return maxZeroCount;
