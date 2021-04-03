@@ -311,5 +311,17 @@ namespace Codility.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(new[] { 1, 3, 6, 4, 1, 2 }, 5)]
+        [InlineData(new[] { 1, 2, 3 }, 4)]
+        [InlineData(new[] { -1, -3 }, 1)]
+        public void MissingInteger(int[] A, int expected)
+        {
+            var algo = new MissingInteger();
+            var actual = algo.solution(A);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
