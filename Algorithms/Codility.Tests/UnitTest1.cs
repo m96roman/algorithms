@@ -12,6 +12,7 @@ using Codility.Iterations;
 using Codility.MaximumSliceProblem;
 using Codility.PrimeAndCompositeNumbers;
 using Codility.SieveOfEratosthenes;
+using Codility.TimeComplexity;
 using Xunit;
 
 namespace Codility.Tests
@@ -284,6 +285,17 @@ namespace Codility.Tests
         public void OddOccurrencesInArray(int[] A, int expected)
         {
             var algo = new OddOccurrencesInArray();
+            var actual = algo.solution(A);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData(new[] { 3, 1, 2, 4, 3 }, 1)]
+        [InlineData(new[] { 2, -2 }, 4)]
+        public void TapeEquilibrium(int[] A, int expected)
+        {
+            var algo = new TapeEquilibrium();
             var actual = algo.solution(A);
 
             Assert.Equal(expected, actual);

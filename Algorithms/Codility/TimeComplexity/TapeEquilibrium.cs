@@ -11,15 +11,12 @@ namespace Codility.TimeComplexity
             var sumOfAllElements = A.Sum();
             var sum = 0;
 
-            for (var i = 0; i < A.Length - 1; ++i)
+            for (var i = 1; i < A.Length; ++i)
             {
-                sum += A[i];
-                var difference = Math.Abs(sumOfAllElements - 2 * sum);
+                sum += A[i - 1];
 
-                if (difference < minDiff)
-                {
-                    minDiff = difference;
-                }
+                var difference = Math.Abs(sumOfAllElements - 2 * sum);
+                minDiff = Math.Min(minDiff, difference);
             }
 
             return minDiff;
