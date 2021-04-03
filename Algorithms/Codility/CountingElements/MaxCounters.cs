@@ -1,4 +1,6 @@
-﻿namespace Codility.CountingElements
+﻿using System;
+
+namespace Codility.CountingElements
 {
     public class MaxCounters
     {
@@ -18,26 +20,14 @@
                 {
                     var el = i - 1;
 
-                    if (counters[el] < maxCounterToSet)
-                    {
-                        counters[el] = maxCounterToSet;
-                    }
-
-                    ++counters[el];
-
-                    if (counters[el] > maxCounter)
-                    {
-                        maxCounter = counters[el];
-                    }
+                    counters[el] = Math.Max(maxCounterToSet, counters[el]) + 1;
+                    maxCounter = Math.Max(maxCounter, counters[el]);
                 }
             }
 
             for (var i = 0; i < N; ++i)
             {
-                if (counters[i] < maxCounterToSet)
-                {
-                    counters[i] = maxCounterToSet;
-                }
+                counters[i] = Math.Max(counters[i], maxCounterToSet);
             }
 
             return counters;

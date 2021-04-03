@@ -1,6 +1,7 @@
 ﻿using Codility.Arrays;
 using Codility.BinarySearchAlgorithm;
 using Codility.CaterpillarMethod;
+using Codility.CountingElements;
 using Codility.DynamicProgramming;
 using Codility.EuclideanAlgorithm;
 using Codility.FibonacciNumbers;
@@ -297,6 +298,16 @@ namespace Codility.Tests
         {
             var algo = new TapeEquilibrium();
             var actual = algo.solution(A);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData(5, new[] { 3, 4, 4, 6, 1, 4, 4 }, new[] { 3, 2, 2, 4, 2 })]
+        public void MaxCounters(int N, int[] A, int[] expected)
+        {
+            var algo = new MaxCounters();
+            var actual = algo.solution(N, A);
 
             Assert.Equal(expected, actual);
         }
