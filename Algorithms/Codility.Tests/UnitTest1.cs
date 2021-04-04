@@ -11,6 +11,7 @@ using Codility.IndeedPrime2016Challenge;
 using Codility.IndeedPrime2016CollageChallenge;
 using Codility.Iterations;
 using Codility.MaximumSliceProblem;
+using Codility.PrefixSums;
 using Codility.PrimeAndCompositeNumbers;
 using Codility.SieveOfEratosthenes;
 using Codility.TimeComplexity;
@@ -331,6 +332,19 @@ namespace Codility.Tests
         {
             var algo = new PermCheck();
             var actual = algo.solution(A);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData(6, 11, 2, 3)]
+        [InlineData(7, 11, 2, 2)]
+        [InlineData(7, 12, 2, 3)]
+        [InlineData(6, 12, 2, 4)]
+        public void CountDiv(int A, int B, int K, int expected)
+        {
+            var algo = new CountDiv();
+            var actual = algo.solution(A, B, K);
 
             Assert.Equal(expected, actual);
         }
