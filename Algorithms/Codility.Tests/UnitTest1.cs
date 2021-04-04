@@ -14,6 +14,7 @@ using Codility.MaximumSliceProblem;
 using Codility.PrefixSums;
 using Codility.PrimeAndCompositeNumbers;
 using Codility.SieveOfEratosthenes;
+using Codility.Sorting;
 using Codility.TimeComplexity;
 using Xunit;
 
@@ -374,6 +375,17 @@ namespace Codility.Tests
         public void MinAvgTwoSlice(int[] A, int expected)
         {
             var algo = new MinAvgTwoSlice();
+            var actual = algo.solution(A);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData(new[] { 10, 2, 5, 1, 8, 20 }, 1)]
+        [InlineData(new[] { 10, 50, 5, 1 }, 0)]
+        public void Triangle(int[] A, int expected)
+        {
+            var algo = new Triangle();
             var actual = algo.solution(A);
 
             Assert.Equal(expected, actual);
