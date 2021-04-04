@@ -15,6 +15,7 @@ using Codility.PrefixSums;
 using Codility.PrimeAndCompositeNumbers;
 using Codility.SieveOfEratosthenes;
 using Codility.Sorting;
+using Codility.StacksAndQueues;
 using Codility.TimeComplexity;
 using Xunit;
 
@@ -397,6 +398,17 @@ namespace Codility.Tests
         {
             var algo = new NumberOfDiscIntersections();
             var actual = algo.solution(A);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData("{[()()]}", 1)]
+        [InlineData("([)()]", 0)]
+        public void Brackets(string S, int expected)
+        {
+            var algo = new Brackets();
+            var actual = algo.solution(S);
 
             Assert.Equal(expected, actual);
         }
