@@ -390,5 +390,15 @@ namespace Codility.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(new[] { 1, 5, 2, 1, 4, 0 }, 11)]
+        public void NumberOfDiscIntersections(int[] A, int expected)
+        {
+            var algo = new NumberOfDiscIntersections();
+            var actual = algo.solution(A);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
