@@ -358,5 +358,15 @@ namespace Codility.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(new[] { 0, 1, 0, 1, 1 }, 5)]
+        public void PassingCars(int[] A, int expected)
+        {
+            var algo = new PassingCars();
+            var actual = algo.solution(A);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
