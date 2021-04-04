@@ -368,5 +368,15 @@ namespace Codility.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(new[] { 4, 2, 2, 5, 1, 5, 8 }, 1)]
+        public void MinAvgTwoSlice(int[] A, int expected)
+        {
+            var algo = new MinAvgTwoSlice();
+            var actual = algo.solution(A);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
