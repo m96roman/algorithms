@@ -348,5 +348,15 @@ namespace Codility.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData("CAGCCTA", new[] { 2, 5, 0 }, new[] { 4, 5, 6 }, new[] { 2, 4, 1 })]
+        public void GenomicRangeQuery(string S, int[] P, int[] Q, int[] expected)
+        {
+            var algo = new GenomicRangeQuery();
+            var actual = algo.solution(S, P, Q);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
