@@ -8,13 +8,11 @@ namespace Algorithms
         private readonly T[] _originalArray;
         private readonly T[] _segmentArray;
         private readonly Func<T, T, T> _agrFunc;
-        private readonly T _defaultValue;
 
-        public SegmentTree(T[] arr, Func<T, T, T> agrFunc, T defaultValue)
+        public SegmentTree(T[] arr, Func<T, T, T> agrFunc)
         {
             _originalArray = arr.ToArray();
             _agrFunc = agrFunc;
-            _defaultValue = defaultValue;
             _segmentArray = InitializeSegmentArray();
 
             BuildArray();
@@ -51,42 +49,60 @@ namespace Algorithms
             return _segmentArray[index];
         }
 
-        public T CalculateOnRange(int start, int end)
+        public T CalculateOnRange(int queryStart, int queryEnd)
         {
-            return CalculateOnRangeRecursive(start, end, 0, 0, _originalArray.Length - 1);
+            var rangeStart = 0;
+            var rangeEnd = _originalArray.Length - 1;
+            var initialNodeIndex = 0;
+
+            return CalculateOnRangeRecursive(queryStart, queryEnd, initialNodeIndex, rangeStart, rangeEnd);
         }
 
-        private T CalculateOnRangeRecursive(int start, int end, int nodeIndex, int nodeStart, int nodeEnd)
+        private T CalculateOnRangeRecursive(int queryStart, int queryEnd, int nodeIndex, int rangeStart, int rangeEnd)
         {
-            if (nodeStart >= start && nodeEnd <= end)
+            if (rangeStart >= queryStart && rangeEnd <= queryEnd)
             {
                 return _segmentArray[nodeIndex];
-            }
-
-            if (end < nodeStart || nodeEnd < start)
-            {
-                return _defaultValue;
             }
 
             var leftIndex = 2 * nodeIndex + 1;
             var rightIndex = 2 * nodeIndex + 2;
 
-            var mid = GetRangeMiddle(nodeStart, nodeEnd);
+            var rangeMid = GetRangeMiddle(rangeStart, rangeEnd);
 
-            var leftAgr = CalculateOnRangeRecursive(start, end, leftIndex, nodeStart, mid);
-            var rightAgr = CalculateOnRangeRecursive(start, end, rightIndex, mid + 1, nodeEnd);
+            if (IsOutOfRange(rangeStart, rangeMid, queryStart, queryEnd))
+            {
+                return CalculateOnRangeRecursive(queryStart, queryEnd, rightIndex, rangeMid + 1, rangeEnd);
+            }
+
+            if (IsOutOfRange(rangeMid + 1, rangeEnd, queryStart, queryEnd))
+            {
+                return CalculateOnRangeRecursive(queryStart, queryEnd, leftIndex, rangeStart, rangeMid);
+            }
+
+            var leftAgr = CalculateOnRangeRecursive(queryStart, queryEnd, leftIndex, rangeStart, rangeMid);
+            var rightAgr = CalculateOnRangeRecursive(queryStart, queryEnd, rightIndex, rangeMid + 1, rangeEnd);
 
             return _agrFunc(leftAgr, rightAgr);
         }
 
-        private int GetRangeMiddle(int start, int end)
+        private static int GetRangeMiddle(int start, int end)
         {
             return (start + end) / 2;
         }
 
-        private int GetSegmentArrayLength(int originalArrayLength)
+        private static int GetSegmentArrayLength(int originalArrayLength)
         {
-            return 4 * originalArrayLength - 1;
+            var log = Math.Log(originalArrayLength, 2);
+            var ceil = (int)Math.Ceiling(log);
+            var pow = (int)Math.Pow(2, ceil);
+
+            return 2 * pow - 1;
+        }
+
+        private static bool IsOutOfRange(int start, int end, int minStart, int maxEnd)
+        {
+            return (end < minStart) || (start > maxEnd);
         }
     }
 }

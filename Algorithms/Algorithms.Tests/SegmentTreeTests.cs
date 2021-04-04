@@ -10,7 +10,7 @@ namespace Algorithms.Tests
         public void CalculateOnRange_FindSum_ShouldReturnCorrectSum(int[] array, int start, int end, int expected)
         {
             //act
-            var segmentTree = new SegmentTree<int>(array, (a, b) => a + b, 0);
+            var segmentTree = new SegmentTree<int>(array, (a, b) => a + b);
             var sum = segmentTree.CalculateOnRange(start, end);
 
             //assert
@@ -22,7 +22,7 @@ namespace Algorithms.Tests
         public void CalculateOnRange_FindMin_ShouldReturnCorrectMinValue(int[] array, int start, int end, int expected)
         {
             //act
-            var segmentTree = new SegmentTree<int>(array, Math.Min, int.MaxValue);
+            var segmentTree = new SegmentTree<int>(array, Math.Min);
             var min = segmentTree.CalculateOnRange(start, end);
 
             //assert
@@ -34,7 +34,7 @@ namespace Algorithms.Tests
         public void CalculateOnRange_FindMax_ShouldReturnCorrectMaxValue(int[] array, int start, int end, int expected)
         {
             //act
-            var segmentTree = new SegmentTree<int>(array, Math.Max, int.MinValue);
+            var segmentTree = new SegmentTree<int>(array, Math.Max);
             var min = segmentTree.CalculateOnRange(start, end);
 
             //assert

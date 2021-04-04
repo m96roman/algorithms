@@ -21,7 +21,7 @@ namespace Codility.PrefixSums
                 .Select(it => ValueMap[it.ToString().ToUpper()])
                 .ToArray();
 
-            var tree = new SegmentTree<int>(values, Math.Min, int.MaxValue);
+            var tree = new SegmentTree<int>(values, Math.Min);
             var result = P.Select((_, i) => tree.CalculateOnRange(P[i], Q[i])).ToArray();
 
             return result;
