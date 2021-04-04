@@ -7,9 +7,6 @@ namespace Codility.PrefixSums
 {
     public class GenomicRangeQuery
     {
-        //Sample input
-        //"CAGCCTA", new[] { 2, 5, 0 }, new[] { 4, 5, 6 }
-
         private static readonly Dictionary<string, int> ValueMap = new Dictionary<string, int>
         {
             ["A"] = 1,
