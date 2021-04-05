@@ -428,5 +428,17 @@ namespace Codility.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(new[] { 23171, 21011, 21123, 21366, 21013, 21367 }, 356)]
+        [InlineData(new int[0], 0)]
+        [InlineData(new[] { 10, 8, 4, 2 }, 0)]
+        public void MaxProfit(int[] A, int expected)
+        {
+            var algo = new MaxProfit();
+            var actual = algo.solution(A);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
