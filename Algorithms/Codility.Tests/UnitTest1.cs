@@ -440,5 +440,15 @@ namespace Codility.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(new[] { 3, 2, -6, 4, 0 }, 5)]
+        public void MaxSliceSum(int[] A, int expected)
+        {
+            var algo = new MaxSliceSum();
+            var actual = algo.solution(A);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
