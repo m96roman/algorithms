@@ -10,6 +10,7 @@ using Codility.IndeedPrime2015Challenge;
 using Codility.IndeedPrime2016Challenge;
 using Codility.IndeedPrime2016CollageChallenge;
 using Codility.Iterations;
+using Codility.Leader;
 using Codility.MaximumSliceProblem;
 using Codility.PrefixSums;
 using Codility.PrimeAndCompositeNumbers;
@@ -409,6 +410,21 @@ namespace Codility.Tests
         {
             var algo = new Brackets();
             var actual = algo.solution(S);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData(new[] { 3, 4, 3, 2, 3, -1, 3, 3 }, 0)]
+        [InlineData(new[] { 4, 4, 4, 4, 6, 6, 6 }, 0)]
+        [InlineData(new[] { 6, 7, 6, 7, 7, 6, 7, 6, 7 }, 1)]
+        [InlineData(new int[0], -1)]
+        [InlineData(new[] { 5, 4, 1, 3, 4 }, -1)]
+        [InlineData(new[] { 5, 5, 2, 2 }, -1)]
+        public void Dominator(int[] A, int expected)
+        {
+            var algo = new Dominator();
+            var actual = algo.solution(A);
 
             Assert.Equal(expected, actual);
         }
