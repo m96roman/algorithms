@@ -7,26 +7,7 @@ namespace Codility.SieveOfEratosthenes
     {
         public int[] solution(int N, int[] P, int[] Q)
         {
-            var sieve = new bool[N / 2 + 1];
-
-            for (var i = 2; i * i < sieve.Length; ++i)
-            {
-                if (sieve[i * i])
-                {
-                    continue;
-                }
-
-                for (var j = i * i; j < sieve.Length; j += i)
-                {
-                    sieve[j] = true;
-                }
-            }
-
-            var primes = sieve
-                .Select((el, i) => new {value = i, isPrime = !el})
-                .Where(it => it.isPrime)
-                .Select(it => it.value).ToArray();
-
+            var primes = Algorithms.SieveOfEratosthenes.GetPrimesUpTo(N / 2);
             var semiPrimes = new BitArray(N + 1);
 
             for (var i = 2; i < primes.Length; ++i)
