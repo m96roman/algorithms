@@ -7,24 +7,17 @@ namespace Codility.EuclideanAlgorithm
     {
         public int solution(int[] A, int[] B)
         {
-            return A.Zip(B, (a, b) => new { a, b })
-                .Where(it =>
-                {
-                    var gcd = Gcd.Calculate(it.a, it.b);
-                    return Check(it.a, gcd) && Check(it.b, gcd);
-                })
-                .Count();
+            return A
+                .Zip(B, (a, b) => new { a, b })
+                .Count(it => Check(it.a, it.b) && Check(it.b, it.a));
 
             bool Check(int number1, int number2)
             {
-                while (number1 != 1)
-                {
-                    var gcd = Gcd.Calculate(number1, number2);
-                    if (gcd == 1)
-                    {
-                        break;
-                    }
+                var gcd = -1;
 
+                while (gcd != 1)
+                {
+                    gcd = Gcd.Calculate(number1, number2);
                     number1 /= gcd;
                 }
 
