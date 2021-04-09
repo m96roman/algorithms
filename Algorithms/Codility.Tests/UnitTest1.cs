@@ -451,5 +451,16 @@ namespace Codility.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(new[] { 1, 4, -3 }, 1)]
+        [InlineData(new[] { -8, 4, 5, -10, 3 }, 3)]
+        public void MinAbsSumOfTwo(int[] A, int expected)
+        {
+            var algo = new MinAbsSumOfTwo();
+            var actual = algo.solution(A);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
