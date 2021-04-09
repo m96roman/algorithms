@@ -1,4 +1,5 @@
-﻿using Algorithms;
+﻿using System.Linq;
+using Algorithms;
 
 namespace Codility.BinarySearchAlgorithm
 {
@@ -6,19 +7,17 @@ namespace Codility.BinarySearchAlgorithm
     {
         public int solution(int[] A, int[] B, int[] C)
         {
-            var planksCount = A.Length;
             var nailsCount = C.Length;
+            var planks = A.Zip(B, (a, b) => new {start = a, end = b})
+                .ToArray();
 
-            var start = 1;
-            var end = planksCount;
-
-            return BinarySearch.SearchMin(start, end, (mid) =>
+            return BinarySearch.SearchMin(0, nailsCount, (mid) =>
             {
                 var prefixSum = new int[2 * nailsCount + 1];
 
-                for (var i = 0; i < mid; ++i)
+                foreach (var nail in C.Take(mid))
                 {
-                    prefixSum[C[i]] = 1;
+                    prefixSum[nail] = 1;
                 }
 
                 for (var i = 1; i < prefixSum.Length; ++i)
@@ -26,18 +25,9 @@ namespace Codility.BinarySearchAlgorithm
                     prefixSum[i] += prefixSum[i - 1];
                 }
 
-                var allPlanksAreNailed = true;
-
-                for (var i = 0; i < planksCount; ++i)
-                {
-                    if (prefixSum[B[i]] == prefixSum[A[i] - 1])
-                    {
-                        allPlanksAreNailed = false;
-                        break;
-                    }
-                }
-
-                return allPlanksAreNailed;
+                return planks
+                    .Select(it => prefixSum[it.end] - prefixSum[it.start - 1])
+                    .All(n => n >= 1);
             });
         }
     }
