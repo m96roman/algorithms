@@ -249,6 +249,7 @@ namespace Codility.Tests
         [Theory]
         [InlineData(new[] { -5, -3, -1, 0, 3, 6 }, 5)]
         [InlineData(new[] { -5, -5, -1, 0, 1, 1, 1, 1, 4, 5, 6, 6, 6 }, 5)]
+        [InlineData(new[] { int.MinValue, int.MinValue, -10, 0, 15 }, 4)]
         public void AbsDistinct(int[] A, int expected)
         {
             var algo = new AbsDistinct();
