@@ -61,31 +61,26 @@ namespace Codility.IndeedPrime2015Challenge
 
         public int solution2(int[] A)
         {
-            var highestIndex = 0;
-            var lowestIndex = 0;
-
+            var highest = 0;
+            var lowest = 0;
             var maxDepth = 0;
 
-            for (var i = 1; i < A.Length; ++i)
+            foreach (var height in A)
             {
-                var current = A[i];
-                var highest = A[highestIndex];
-                var lowest = A[lowestIndex];
-
-                if (current > highest)
+                if (height < lowest)
                 {
-                    highestIndex = i;
-                    lowestIndex = i;
-
+                    lowest = height;
+                }
+                else if (height >= highest)
+                {
                     maxDepth = Math.Max(maxDepth, highest - lowest);
+
+                    highest = height;
+                    lowest = height;
                 }
-                else if (current > lowest)
+                else if (height > lowest)
                 {
-                    maxDepth = Math.Max(maxDepth, current - lowest);
-                }
-                else if (current < lowest)
-                {
-                    lowestIndex = i;
+                    maxDepth = Math.Max(maxDepth, height - lowest);
                 }
             }
 
