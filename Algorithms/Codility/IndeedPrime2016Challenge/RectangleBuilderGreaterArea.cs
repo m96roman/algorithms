@@ -44,17 +44,14 @@ namespace Codility.IndeedPrime2016Challenge
 
             for (var i = 0; i < orderedPieces.Length; ++i)
             {
-                var lowerBound = i + 1;
-                var upperBound = orderedPieces.Length - 1;
+                var secondMultiplierIndex = orderedPieces[i] >= X
+                    ? i + 1
+                    : BinarySearch.SearchMin(i + 1, orderedPieces.Length - 1,
+                        (mid) => (long) orderedPieces[mid] * (long) orderedPieces[i] >= (long) X);
 
-                var value = BinarySearch.SearchMin(lowerBound, upperBound, (mid) =>
+                if (secondMultiplierIndex != -1)
                 {
-                    return (long)orderedPieces[mid] * (long)orderedPieces[i] >= (long)X;
-                });
-
-                if (value != -1)
-                {
-                    fenceCount += (orderedPieces.Length - value);
+                    fenceCount += (orderedPieces.Length - secondMultiplierIndex);
                 }
 
                 if (fenceCount > 1000000000)
