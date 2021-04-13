@@ -688,5 +688,57 @@ namespace Algotester
                     .ToArray();
             }
         }
+
+        public class DeputiesTies : IProblemSolver
+        {
+            public void Solve(TextReader reader, TextWriter writer)
+            {
+                var line1 = ReadIntArray(reader);
+
+                var deputiesCount = line1[1];
+
+                var ties = ReadIntArray(reader);
+                var maxPossibleTieLength = ties.Select(it => (double)it).Sum() / deputiesCount;
+
+                var result = BinarySearch(0, maxPossibleTieLength, (mid) =>
+                {
+                    var possibleTiesCount = ties.Sum(tie => (int)Math.Floor(tie / mid));
+
+                    return possibleTiesCount >= deputiesCount;
+                });
+
+                writer.WriteLine($"{result:0.00000}");
+            }
+
+            private static double BinarySearch(double lowerBound, double upperBound, Predicate<double> predicate)
+            {
+                double lastSuccess = 0;
+
+                while (upperBound - lowerBound >= 0.00001)
+                {
+                    var mid = lowerBound + (upperBound - lowerBound) / 2;
+
+                    if (predicate(mid))
+                    {
+                        lastSuccess = mid;
+                        lowerBound = mid;
+                    }
+                    else
+                    {
+                        upperBound = mid;
+                    }
+                }
+
+                return lastSuccess;
+            }
+
+            private static int[] ReadIntArray(TextReader reader)
+            {
+                return reader.ReadLine()
+                    .Split(' ')
+                    .Select(int.Parse)
+                    .ToArray();
+            }
+        }
     }
 }

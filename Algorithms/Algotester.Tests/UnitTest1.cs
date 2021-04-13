@@ -121,5 +121,10 @@ namespace Algotester.Tests
         [InlineData("3 4 1|nl0 1 0 0|nl1 0 0 0|nl0 0 0 1", "9|nl")]
         public void Civilization(string input, string expected) =>
             RunTestFor<Civilization>(input, expected);
+
+        [Theory]
+        [InlineData("3 4|nl1 10 5", "3.33333|nl")]
+        public void DeputiesTies(string input, string expected) =>
+            RunTestFor<DeputiesTies>(input, expected);
     }
 }
