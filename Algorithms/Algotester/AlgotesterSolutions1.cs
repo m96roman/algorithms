@@ -740,5 +740,54 @@ namespace Algotester
                     .ToArray();
             }
         }
+
+        public class ToiletManEscape : IProblemSolver
+        {
+            public void Solve(TextReader reader, TextWriter writer)
+            {
+                var turnsCount = ReadIntArray(reader)[0];
+                var coordinates = new List<(int x, int y)>();
+
+                for (var i = 0; i < turnsCount; ++i)
+                {
+                    var line = ReadIntArray(reader);
+                    coordinates.Add((line[0], line[1]));
+                }
+
+                var turnRight = 0;
+                var turnLeft = 0;
+
+                for (var i = 2; i < coordinates.Count; ++i)
+                {
+                    var v1 = GetVector(coordinates[i - 2], coordinates[i - 1]);
+                    var v2 = GetVector(coordinates[i - 2], coordinates[i]);
+
+                    var product = GetVectorProduct(v1, v2);
+
+                    turnLeft += product > 0 ? 1 : 0;
+                    turnRight += product < 0 ? 1 : 0;
+                }
+
+                writer.WriteLine($"{turnLeft} {turnRight}");
+            }
+
+            private static int GetVectorProduct((int x, int y) v1, (int x, int y) v2)
+            {
+                return v1.x * v2.y - v1.y * v2.x;
+            }
+
+            private static (int x, int y) GetVector((int x, int y) p1, (int x, int y) p2)
+            {
+                return (p2.x - p1.x, p2.y - p1.y);
+            }
+
+            private static int[] ReadIntArray(TextReader reader)
+            {
+                return reader.ReadLine()
+                    .Split(' ')
+                    .Select(int.Parse)
+                    .ToArray();
+            }
+        }
     }
 }

@@ -126,5 +126,10 @@ namespace Algotester.Tests
         [InlineData("3 4|nl1 10 5", "3.33333|nl")]
         public void DeputiesTies(string input, string expected) =>
             RunTestFor<DeputiesTies>(input, expected);
+
+        [Theory]
+        [InlineData("7|nl1 2|nl2 5|nl4 4|nl3 2|nl5 3|nl1 4|nl0 7|nl", "2 3|nl")]
+        public void ToiletManEscape(string input, string expected) =>
+            RunTestFor<ToiletManEscape>(input, expected);
     }
 }
