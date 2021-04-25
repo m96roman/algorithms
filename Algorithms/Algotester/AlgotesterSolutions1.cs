@@ -789,5 +789,51 @@ namespace Algotester
                     .ToArray();
             }
         }
+
+        public class ToiletManBegin : IProblemSolver
+        {
+            public void Solve(TextReader reader, TextWriter writer)
+            {
+                const int mod = 1000000007;
+
+                var line = ReadIntArray(reader);
+                var subSequenceMaxLength = line[1];
+
+                var sequence = ReadIntArray(reader);
+                var occurrences = new int[subSequenceMaxLength + 1];
+
+                foreach (var el in sequence.Where(it => it <= subSequenceMaxLength))
+                {
+                    occurrences[el] += 1;
+                }
+
+                long result = 0;
+                long lastResult = 1;
+
+                foreach (var occurrence in occurrences.Skip(1))
+                {
+                    if (occurrence == 0)
+                    {
+                        break;
+                    }
+
+                    lastResult *= occurrence;
+                    lastResult %= mod;
+
+                    result += lastResult;
+                    result %= mod;
+                }
+
+                writer.WriteLine(result);
+            }
+
+            private static int[] ReadIntArray(TextReader reader)
+            {
+                return reader.ReadLine()
+                    .Split(' ')
+                    .Select(int.Parse)
+                    .ToArray();
+            }
+        }
     }
 }

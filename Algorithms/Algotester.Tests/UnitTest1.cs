@@ -9,7 +9,7 @@ namespace Algotester.Tests
 {
     public class UnitTest1
     {
-        private static string RunProblemSolver<T>(string input) where T: IProblemSolver, new()
+        private static string RunProblemSolver<T>(string input) where T : IProblemSolver, new()
         {
             using var reader = new StringReader(input.Replace("|nl", Environment.NewLine));
             using var writer = new StringWriter();
@@ -116,7 +116,7 @@ namespace Algotester.Tests
         [InlineData("5|nl1 2|nl3 4|nl0 0", "2|nl")]
         public void Terrorist(string input, string expected) =>
             RunTestFor<Terrorist>(input, expected);
-        
+
         [Theory]
         [InlineData("3 4 1|nl0 1 0 0|nl1 0 0 0|nl0 0 0 1", "9|nl")]
         public void Civilization(string input, string expected) =>
@@ -131,5 +131,16 @@ namespace Algotester.Tests
         [InlineData("7|nl1 2|nl2 5|nl4 4|nl3 2|nl5 3|nl1 4|nl0 7|nl", "2 3|nl")]
         public void ToiletManEscape(string input, string expected) =>
             RunTestFor<ToiletManEscape>(input, expected);
+
+        [Theory]
+        [InlineData("4 3|nl1 3 2 3|nl", "4|nl")]
+        [InlineData("6 4|nl1 3 2 4 3 4|nl", "8|nl")]
+        [InlineData("4 5|nl1 3 2 5 3|nl", "4|nl")]
+        [InlineData("6 4|nl1 3 2 3 3 4|nl", "8|nl")]
+        [InlineData("3 2|nl2 2 2|nl", "0|nl")]
+        [InlineData("4 1|nl2 3 5 4|nl", "0|nl")]
+        [InlineData("8 4|nl2 2 3 1 4 1 4 2|nl", "26|nl")]
+        public void ToiletManBegin(string input, string expected) =>
+            RunTestFor<ToiletManBegin>(input, expected);
     }
 }
