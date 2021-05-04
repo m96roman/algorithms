@@ -835,5 +835,30 @@ namespace Algotester
                     .ToArray();
             }
         }
+
+        public class LeapYears : IProblemSolver
+        {
+            public void Solve(TextReader reader, TextWriter writer)
+            {
+                var years = int.Parse(reader.ReadLine().Trim());
+
+                var result = Enumerable
+                    .Range(1, 400)
+                    .Select(it => GetCountOfLeapYears(years + it - 1) - GetCountOfLeapYears(it) + (IsLeapYear(it) ? 1 : 0))
+                    .ToArray();
+
+                writer.WriteLine($"{result.Min()} {result.Max()}");
+            }
+
+            private static int GetCountOfLeapYears(int year)
+            {
+                return year / 4 - year / 100 + year / 400;
+            }
+
+            private static bool IsLeapYear(int year)
+            {
+                return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+            }
+        }
     }
 }

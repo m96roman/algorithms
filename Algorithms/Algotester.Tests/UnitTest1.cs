@@ -142,5 +142,10 @@ namespace Algotester.Tests
         [InlineData("8 4|nl2 2 3 1 4 1 4 2|nl", "26|nl")]
         public void ToiletManBegin(string input, string expected) =>
             RunTestFor<ToiletManBegin>(input, expected);
+
+        [Theory]
+        [InlineData("7|nl", "0 2|nl")]
+        public void LeapYears(string input, string expected) =>
+            RunTestFor<LeapYears>(input, expected);
     }
 }
