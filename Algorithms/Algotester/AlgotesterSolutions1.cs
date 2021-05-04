@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -858,6 +859,82 @@ namespace Algotester
             private static bool IsLeapYear(int year)
             {
                 return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+            }
+        }
+
+        public class Marijuana : IProblemSolver
+        {
+            public void Solve(TextReader reader, TextWriter writer)
+            {
+                reader.ReadLine();
+
+                var distances = ReadIntArray(reader);
+                var optimalDistance = GetOptimalDistance(0, distances);
+
+                var result = new List<int>();
+                var used = new BitArray(distances.Length);
+                var length = 0;
+
+                foreach (var _ in distances)
+                {
+                    for (var i = 0; i < distances.Length; ++i)
+                    {
+                        if (used[i])
+                        {
+                            continue;
+                        }
+
+                        var last = result.Any() ? distances[result.Last()] : 0;
+                        var value = distances[i];
+
+                        var notUsed = distances
+                            .Where((it, idx) => used[idx] == false && idx != i)
+                            .ToArray();
+
+                        if (length + GetDistance(last, value) + GetOptimalDistance(value, notUsed) != optimalDistance)
+                        {
+                            continue;
+                        }
+
+                        used[i] = true;
+                        result.Add(i);
+                        length += GetDistance(last, value);
+
+                        break;
+                    }
+                }
+
+                writer.WriteLine(string.Join(" ", result.Select(it => it + 1)));
+            }
+
+            public static int GetOptimalDistance(int last, int[] distances)
+            {
+                if (distances.Length == 0)
+                {
+                    return 0;
+                }
+
+                var min = distances.Min();
+
+                return distances.Sum() - distances.Min() + GetDistance(last, min);
+            }
+
+            public static int GetDistance(int left, int right)
+            {
+                if (left == 0 || right == 0)
+                {
+                    return 0;
+                }
+
+                return Math.Max(left, right);
+            }
+
+            private static int[] ReadIntArray(TextReader reader)
+            {
+                return reader.ReadLine()
+                    .Split(' ')
+                    .Select(int.Parse)
+                    .ToArray();
             }
         }
     }

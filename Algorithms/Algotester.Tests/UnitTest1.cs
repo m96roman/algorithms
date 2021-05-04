@@ -147,5 +147,10 @@ namespace Algotester.Tests
         [InlineData("7|nl", "0 2|nl")]
         public void LeapYears(string input, string expected) =>
             RunTestFor<LeapYears>(input, expected);
+
+        [Theory]
+        [InlineData("3|nl4 7 5", "1 3 2|nl")]
+        public void Marijuana(string input, string expected) =>
+            RunTestFor<Marijuana>(input, expected);
     }
 }
