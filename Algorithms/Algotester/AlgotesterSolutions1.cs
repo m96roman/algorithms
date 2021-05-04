@@ -16,7 +16,6 @@ namespace Algotester
             public void Solve(TextReader reader, TextWriter writer)
             {
                 var friendsCount = int.Parse(reader.ReadLine());
-                int A = 0, B = 0, C = 0;
                 var wishes = new int[friendsCount][];
 
                 for (var i = 0; i < friendsCount; ++i)
@@ -24,22 +23,19 @@ namespace Algotester
                     var str = Regex.Replace(reader.ReadLine(), "[ ]{2,}", " ");
                     var friendWish = str.Split(' ').Select(int.Parse).ToArray();
                     wishes[i] = friendWish;
-
-                    A += friendWish[0];
-                    B += friendWish[1];
-                    C += friendWish[2];
                 }
 
-                var a = A / friendsCount;
-                var b = B / friendsCount;
-                var c = C / friendsCount;
+                var index = (friendsCount - 1) / 2;
 
+                var a = wishes.Select(it => it[0]).OrderBy(it => it).ToArray()[index];
+                var b = wishes.Select(it => it[1]).OrderBy(it => it).ToArray()[index];
+                var c = wishes.Select(it => it[2]).OrderBy(it => it).ToArray()[index];
 
                 var complaint = 0;
 
                 for (var i = 0; i < friendsCount; ++i)
                 {
-                    complaint =
+                    complaint +=
                         Math.Abs(wishes[i][0] - a) +
                         Math.Abs(wishes[i][1] - b) +
                         Math.Abs(wishes[i][2] - c);

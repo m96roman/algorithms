@@ -33,7 +33,7 @@ namespace Algotester.Tests
         public void DeputyMoney(string input, string expected) =>
             RunTestFor<DeputyMoney>(input, expected);
 
-        [Theory(Skip = "Problem not solved")]
+        [Theory]
         [InlineData("2|nl10 50 100|nl70 10 50", "150|nl")]
         public void BorschPotatoSalad(string input, string expected) =>
             RunTestFor<BorschPotatoSalad>(input, expected);
