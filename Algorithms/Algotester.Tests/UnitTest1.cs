@@ -152,5 +152,18 @@ namespace Algotester.Tests
         [InlineData("3|nl4 7 5", "1 3 2|nl")]
         public void Marijuana(string input, string expected) =>
             RunTestFor<Marijuana>(input, expected);
+
+        [Theory]
+        [InlineData("15|nl7 4 4|nl", "11|nl")]
+        [InlineData("41247|nl8 3 2|nl", "4|nl")]
+        [InlineData("41247|nl8 3 12|nl", "16|nl")]
+        [InlineData("107|nl8 3 4|nl", "8|nl")]
+        [InlineData("10|nl8 3 4|nl", "11|nl")]
+        [InlineData("1|nl19 3 4|nl", "7|nl")]
+        [InlineData("1|nl2 3 4|nl", "2|nl")]
+        [InlineData("7|nl2 3 4|nl", "0|nl")]
+        [InlineData("58|nl8 3 1|nl", "5|nl")]
+        public void LuckyHouse(string input, string expected) =>
+            RunTestFor<LuckyHouse>(input, expected);
     }
 }

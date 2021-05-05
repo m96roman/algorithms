@@ -933,5 +933,43 @@ namespace Algotester
                     .ToArray();
             }
         }
+
+        public class LuckyHouse : IProblemSolver
+        {
+            public void Solve(TextReader reader, TextWriter writer)
+            {
+                var number = reader.ReadLine().Trim();
+                var prices = ReadIntArray(reader);
+
+                var changePrice = prices[0];
+                var addPrice = prices[1];
+                var deletePrice = prices[2];
+
+                var digits = number.ToCharArray();
+
+                var fixPrice = Math.Min(changePrice, deletePrice);
+
+                var notLuckyNumbersCount = digits.Skip(1).Count(it => !IsLucky(it));
+                var existLuckyNumber = notLuckyNumbersCount < digits.Length - 1;
+
+                var fullPrice = notLuckyNumbersCount * fixPrice;
+                fullPrice += IsLucky(digits.First()) ? 0 : Math.Min(changePrice, deletePrice + (existLuckyNumber ? 0 : addPrice));
+
+                writer.WriteLine(fullPrice);
+            }
+
+            private static bool IsLucky(char digit)
+            {
+                return digit == '7' || digit == '4';
+            }
+
+            private static int[] ReadIntArray(TextReader reader)
+            {
+                return reader.ReadLine()
+                    .Split(' ')
+                    .Select(int.Parse)
+                    .ToArray();
+            }
+        }
     }
 }
