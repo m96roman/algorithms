@@ -605,5 +605,16 @@ namespace LeetCode.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(new[] { 3, 2, 1, 0, 4 }, false)]
+        [InlineData(new[] { 2, 3, 1, 1, 4 }, true)]
+        public void JumpGame_Jump(int[] nums, bool expected)
+        {
+            var algo = new JumpGame();
+            var actual = algo.CanJump(nums);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
