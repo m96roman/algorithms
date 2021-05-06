@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using LeetCode.Domain;
 using Xunit;
 
 namespace LeetCode.Tests
@@ -615,6 +617,62 @@ namespace LeetCode.Tests
             var actual = algo.CanJump(nums);
 
             Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [MemberData(nameof(ConvertSortedListToBinarySearchTree_SortedListToBST_Data))]
+        public void ConvertSortedListToBinarySearchTree_SortedListToBST(ListNode list, TreeNode expected)
+        {
+            var algo = new ConvertSortedListToBinarySearchTree();
+            var actual = algo.SortedListToBST(list);
+
+            Assert.Equal(expected, actual, new TreeNodeComparer());
+        }
+
+        public static IEnumerable<object[]> ConvertSortedListToBinarySearchTree_SortedListToBST_Data()
+        {
+            yield return new object[]
+            {
+                ReadList(-10,-3,0,5,9),
+                ReadBinary(0,-3,9,-10,null,5)
+            };
+
+            yield return new object[]
+            {
+                ReadList(),
+                ReadBinary()
+            };
+
+            yield return new object[]
+            {
+                ReadList(0),
+                ReadBinary(0)
+            };
+
+            yield return new object[]
+            {
+                ReadList(1, 3),
+                ReadBinary(3, 1)
+            };
+        }
+
+        private static ListNode ReadList(params int[] list)
+        {
+            if (!list.Any())
+            {
+                return null;
+            }
+
+            var head = new ListNode(list[0]);
+            var iterator = head;
+
+            foreach (var el in list.Skip(1))
+            {
+                iterator.next = new ListNode(el);
+                iterator = iterator.next;
+            }
+
+            return head;
         }
     }
 }
