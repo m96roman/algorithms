@@ -674,5 +674,20 @@ namespace LeetCode.Tests
 
             return head;
         }
+
+        [Theory]
+        [InlineData(new[] { 1, 2, 3, 4, 5, 6, 1 }, 3, 12)]
+        [InlineData(new[] { 2, 2, 2 }, 2, 4)]
+        [InlineData(new[] { 9, 7, 7, 9, 7, 7, 9 }, 7, 55)]
+        [InlineData(new[] { 1, 1000, 1 }, 1, 1)]
+        [InlineData(new[] { 1, 79, 80, 1, 1, 1, 200, 1 }, 3, 202)]
+        [InlineData(new[] { 7 }, 1, 7)]
+        public void MaximumPointsYouCanObtainFromCards_MaxScore(int[] cardPoints, int k, int expected)
+        {
+            var algo = new MaximumPointsYouCanObtainFromCards();
+            var actual = algo.MaxScore(cardPoints, k);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
