@@ -689,5 +689,17 @@ namespace LeetCode.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData("III", 3)]
+        [InlineData("LVIII", 58)]
+        [InlineData("MCMXCIV", 1994)]
+        public void RomanToInteger_RomanToInt(string s, int expected)
+        {
+            var algo = new RomanToInteger();
+            var actual = algo.RomanToInt(s);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
