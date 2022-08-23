@@ -25,17 +25,14 @@ namespace LeetCode
 
             var result = 0;
 
-            for (var i = 0; i < s.Length; i++)
+            for (var i = 0; i < s.Length; )
             {
-                if (i + 1 < s.Length && map.TryGetValue($"{s[i]}{s[i + 1]}", out var value))
-                {
-                    result += value;
-                    ++i;
-                }
-                else
-                {
-                    result += map[$"{s[i]}"];
-                }
+                var key = i + 1 < s.Length && map.ContainsKey(s[i..(i + 2)])
+                    ? s[i..(i + 2)]
+                    : s[i..(i + 1)];
+
+                result += map[key];
+                i += key.Length;
             }
 
             return result;
