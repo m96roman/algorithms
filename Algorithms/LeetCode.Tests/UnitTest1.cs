@@ -701,5 +701,20 @@ namespace LeetCode.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData("()", true)]
+        [InlineData("()[]{}", true)]
+        [InlineData("(]", false)]
+        [InlineData("([{}])", true)]
+        [InlineData("([]", false)]
+        [InlineData("]", false)]
+        public void ValidParentheses_IsValid(string s, bool expected)
+        {
+            var algo = new ValidParentheses();
+            var actual = algo.IsValid(s);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
