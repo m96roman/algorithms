@@ -716,5 +716,18 @@ namespace LeetCode.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData("babad", "bab")]
+        [InlineData("cbbd", "bb")]
+        [InlineData("a", "a")]
+        [InlineData("bc", "b")]
+        public void LongestPalindromicSubstring_LongestPalindrome(string s, string expected)
+        {
+            var algo = new LongestPalindromicSubstring();
+            var actual = algo.LongestPalindrome(s);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
